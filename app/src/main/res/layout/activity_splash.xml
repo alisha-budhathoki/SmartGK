@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Actvities.SplashActivity">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Smart GK"
+        android:textColor="@color/mintGreen"
+        android:textStyle="bold"
+        android:textSize="@dimen/exxtraheading1"
+        android:layout_marginTop="@dimen/spacing_large"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+     <ImageView
+         android:id="@+id/gradient"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/my_gradient_drawable"
+         app:layout_constraintTop_toBottomOf="@+id/welcome"
+         android:layout_marginTop="@dimen/spacing_large"
+        />
+
+    <TextView
+        android:id="@+id/shapeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="𝓢𝓱𝓪𝓹𝓮𝓼 𝔂𝓸𝓾𝓻 𝓬𝓪𝓻𝓮𝓮𝓻"
+        android:textColor="@color/browndark"
+        app:fontFamily="cursive"
+        android:textSize="@dimen/extraheading1"
+        android:layout_marginLeft="@dimen/spacing_xxxxxlarge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gradient" />
+
+
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMART CAREER"
+        android:elegantTextHeight="true"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="fill"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:textSize="@dimen/largeheading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapeTxt"
+
+        />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ACADEMY"
+        android:textSize="@dimen/largeheading"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text1"
+
+        />
+    <TextView
+        android:id="@+id/smrtGk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMART GK"
+        android:textSize="@dimen/largeheading"
+        android:textColor="@color/browndark"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text2"
+        />
+
+    <TextView
+        android:id="@+id/texto1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="We conduct all classes of Public"
+        android:textSize="15sp"
+        android:layout_marginTop="@dimen/spacing_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gradient" />
+
+   <TextView
+        android:id="@+id/texto2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service and provide free"
+       android:textSize="15sp"
+       app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto1"
+    />
+
+    <TextView
+        android:id="@+id/texto3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="counseling. Nepal's 1st and"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto2"
+        />
+
+    <TextView
+        android:id="@+id/texto4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No.1 Online institute"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto3"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

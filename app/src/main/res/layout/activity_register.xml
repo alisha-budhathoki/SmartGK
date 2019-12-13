@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Actvities.RegisterActivity">
+
+    <TextView
+        android:id="@+id/regTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Register with Smart GK"
+        android:textStyle="bold"
+        android:textColor="@color/mintGreen"
+        android:textSize="@dimen/extraheading1"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginStart="@dimen/spacing_large"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regTxt"
+        android:layout_marginTop="@dimen/spacing_large"
+
+        >
+        <androidx.cardview.widget.CardView
+            android:elevation="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            app:cardElevation="1dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="12dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/emailEdittextr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Email Address"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/passwordEditextr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/normalMargin"
+                    android:hint="Passowrd"
+                    android:inputType="textPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailEdittextr" />
+
+                <EditText
+                    android:id="@+id/confpwdEdtTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/normalMargin"
+                    android:hint="Retype Passowrd"
+                    android:inputType="textPassword"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordEditextr" />
+
+
+              </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:background="@color/grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_large"
+        />
+
+    <TextView
+        android:id="@+id/txtRegWth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Or register with"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerBtn"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:textColor="@color/mintGreen"
+        android:textSize="@dimen/heading1"
+        android:textStyle="bold"
+        app:layout_goneMarginTop="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_large"
+        ></TextView>
+
+    <ImageView
+        android:id="@+id/fbIcon"
+        android:layout_width="@dimen/spacing_smlarge"
+        android:layout_height="@dimen/spacing_smlarge"
+        android:src="@drawable/fb_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRegWth"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        />
+    <ImageView
+        android:id="@+id/google_plusIcon"
+        android:layout_width="@dimen/spacing_smlarge"
+        android:layout_height="@dimen/spacing_smlarge"
+        android:src="@drawable/google_logo"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_large"
+        app:layout_constraintStart_toEndOf="@+id/fbIcon"
+        app:layout_constraintTop_toBottomOf="@+id/txtRegWth"
+        />
+
+    <TextView
+        android:id="@+id/alreadyAcnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account ?"
+        android:textColor="@color/mintGreen"
+        android:textStyle="bold"
+        android:textSize="@dimen/heading1"
+        android:layout_marginLeft="@dimen/spacing_large"
+        app:layout_goneMarginTop="@dimen/spacing_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fbIcon"
+        android:layout_marginTop="@dimen/spacing_large"
+        />
+
+    <TextView
+        android:id="@+id/gotoLogn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alreadyAcnt"
+        android:text="Go to login page"
+        android:textSize="@dimen/heading3"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:textColor="@color/skyBlue"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/goHomer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Go Home"
+        android:textSize="@dimen/heading3"
+        android:layout_marginBottom="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/spacing_large"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

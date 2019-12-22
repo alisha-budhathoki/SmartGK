@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/mainConstraint"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.InvoiceFragment">
+
+
+
+    <TextView
+        android:id="@+id/invoiceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mintGreen"
+        android:text="Invoice"
+        android:textStyle="bold"
+        android:textSize="@dimen/heading1"
+        android:layout_marginTop="@dimen/spacing_xlarge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="@dimen/standard_margin"
+        />
+    
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logo1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invoiceTitle"
+/>
+
+    <TextView
+        android:id="@+id/invoiceTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invoice:#0"
+        android:textStyle="bold"
+        android:textSize="@dimen/heading3"
+        android:layout_marginRight="@dimen/standard_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invoiceTitle"
+        />
+
+    <TextView
+        android:id="@+id/smrtGkTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMART GK"
+        android:textStyle="bold"
+        android:textSize="@dimen/heading3"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/standard_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invoiceTxt"
+        />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Baneshwor, Kathmandu, Nepal"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smrtGkTitle"
+        android:layout_marginRight="@dimen/standard_margin"
+        />
+
+    <TextView
+        android:id="@+id/phoneNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+977-984-9879876"
+        android:layout_marginRight="@dimen/standard_margin"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="info@smartgkonline.com"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNo"
+        android:layout_marginRight="@dimen/standard_margin"
+        />
+
+    <TextView
+        android:id="@+id/site"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="www.smartgkonline.com"
+        android:textSize="12sp"
+        android:layout_marginRight="@dimen/standard_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        />
+
+    <TextView
+        android:id="@+id/costName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CUSTOMER NAME"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/site"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/standard_margin"
+        />
+
+    <TextView
+        android:id="@+id/costDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DATE"
+        android:textSize="12sp"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_medium"
+        app:layout_constraintStart_toEndOf="@+id/costName"
+        app:layout_constraintTop_toBottomOf="@+id/site"
+        />
+
+    <TextView
+        android:id="@+id/costEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EMAIL ADDRESS"
+        android:textSize="12sp"
+        android:layout_marginRight="@dimen/standard_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/site"
+        android:layout_marginTop="@dimen/spacing_large"
+        />
+
+    <TextView
+        android:id="@+id/costNameVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="John Doe"
+        android:textSize="12sp"
+        android:layout_marginLeft="@dimen/standard_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/costName"
+        android:layout_marginRight="@dimen/standard_margin"
+        android:textStyle="bold"
+        />
+
+
+    <TextView
+        android:id="@+id/costDateVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="December 1st 2019"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/spacing_large"
+        app:layout_constraintStart_toEndOf="@+id/costNameVal"
+        app:layout_constraintTop_toBottomOf="@+id/costDate"
+        app:layout_constraintEnd_toStartOf="@+id/costEmailVal"
+        />
+
+
+
+    <TextView
+        android:id="@+id/costEmailVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="johndoe@gmail.com"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/costEmail"
+        android:layout_marginRight="@dimen/standard_margin"
+        />
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#CCC"
+        android:paddingTop="1dp"
+        android:stretchColumns="0"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="@dimen/standard_margin"
+        android:layout_marginRight="@dimen/standard_margin"
+        android:id="@+id/tlTable01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/costEmailVal">
+
+        <TableRow
+            android:background="#CCC"
+            android:paddingBottom="1dp"
+            android:paddingRight="1dp">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:text="Course Name"/>
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:gravity="right"
+                android:text="Description"/>
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:gravity="right"
+                android:text="Price"/>
+        </TableRow>
+        <TableRow
+            android:background="#CCC"
+            android:paddingBottom="1dp"
+            android:paddingRight="1dp">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:textStyle="bold"
+                android:text="Nepal Rastra Bank-level 4"/>
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:text="Videos"/>
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:text="Rs. 500"/>
+        </TableRow>
+        <TableRow
+            android:background="#CCC"
+            android:paddingBottom="1dp"
+            android:paddingRight="1dp">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:textStyle="bold"
+                android:text="Nepal Rastra Bank-level 4"/>
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:text="Videos"/>
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:text="Rs. 500"/>
+        </TableRow>
+        <TableRow
+            android:background="#CCC"
+            android:paddingBottom="1dp"
+            android:paddingRight="1dp">
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:layout_weight="2"
+                android:textStyle="bold"
+                android:text="Total"/>
+            <TextView
+                android:layout_marginLeft="1dp"
+                android:padding="5dp"
+                android:background="#FFF"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:text="Rs. 1000"/>
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnSavePdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tlTable01"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+

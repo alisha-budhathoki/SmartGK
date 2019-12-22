@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#CCC"
+    android:paddingTop="1dp"
+    android:stretchColumns="0"
+    android:id="@+id/tlTable01">
+
+    <TableRow
+        android:background="#CCC"
+        android:paddingBottom="1dp"
+        android:paddingRight="1dp">
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:text="Course Name"/>
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:gravity="right"
+            android:text="Description"/>
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:gravity="right"
+            android:text="Price"/>
+    </TableRow>
+    <TableRow
+        android:background="#CCC"
+        android:paddingBottom="1dp"
+        android:paddingRight="1dp">
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:text="Nepal Rastra Bank-level 4"/>
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:gravity="right"
+            android:text="Videos"/>
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:gravity="right"
+            android:text="Rs. 500"/>
+    </TableRow>
+    <TableRow
+        android:background="#CCC"
+        android:paddingBottom="1dp"
+        android:paddingRight="1dp">
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:text="Nepal Rastra Bank-level 4"/>
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:gravity="right"
+            android:text="Videos"/>
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:gravity="right"
+            android:text="Rs. 500"/>
+    </TableRow>
+    <TableRow
+        android:background="#CCC"
+        android:paddingBottom="1dp"
+        android:paddingRight="1dp">
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:layout_weight="2"
+            android:text="Total"/>
+        <TextView
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:background="#FFF"
+            android:gravity="right"
+            android:text="Rs. 1000"/>
+    </TableRow>
+</TableLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "703401179906",
+    "firebase_url": "https://smartgk-e3b24.firebaseio.com",
+    "project_id": "smartgk-e3b24",
+    "storage_bucket": "smartgk-e3b24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703401179906:android:56322bb18aa7426ebde01b",
+        "android_client_info": {
+          "package_name": "com.example.smartgk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703401179906-b6fgkvpc6oatsmiil8jbh6up9amesodh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smartgk",
+            "certificate_hash": "4ec6422c415c40d890e71518002716001d441149"
+          }
+        },
+        {
+          "client_id": "703401179906-50jumpfrtf7lqota88rved9qbki3ar6l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIkqyiqPnb2WgTZ4OhyrPqGRK6GVIeMyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703401179906-50jumpfrtf7lqota88rved9qbki3ar6l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

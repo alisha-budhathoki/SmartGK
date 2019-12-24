@@ -37,7 +37,7 @@
             android:elevation="200dp"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            app:cardElevation="1dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true"
             app:contentPadding="12dp"
             android:layout_marginTop="20dp"

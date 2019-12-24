@@ -1,8 +1,10 @@
 package com.example.smartgk.Actvities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,40 +14,57 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.request.RequestOptions;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
+import com.example.smartgk.publicAccess.Keys;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.Profile;
-import com.facebook.login.Login;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.Task;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.Callable;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String TAG = "Apple";
-    EditText email, password;
+    EditText emailL, passwordL;
     Button login;
     TextView frgt, crtAcnt, here;
     CallbackManager mFacebookCallbackManager;
     private LoginButton mFacebookSignInButton;
-    Exception exception;
-    ImageView loginImg;
-    SignInButton googleSignIn;
+    ImageView myFbSigninBtn, loginGoogleImg;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
+    private GoogleApiClient googleApiClient;
+    private static final int REQ_CODE = 9001;
+    ImageView myGoogleSigninBtn;
     GoogleSignInClient mGoogleSignInClient;
+    String email,name,first_name,last_name;
+    SharedPreferenceClass sharedPreferenceClass;
+
+
+
+
+
 
 
 
@@ -53,15 +72,51 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         FacebookSdk.sdkInitialize(getApplicationContext());
 
-        mFacebookCallbackManager = CallbackManager.Factory.create();
 
         // This MUST be placed after the above two lines.
 
         setContentView(R.layout.activity_login);
+        sharedPreferenceClass = new SharedPreferenceClass(getApplicationContext());
+
+        sharedPref = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+
 
         intitWidgets();
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestId()
+                .requestProfile()
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        myGoogleSigninBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, REQ_CODE);
+            }
+        });
+
+        myFbSigninBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile"));
+
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         crtAcnt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,135 +134,130 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        loginImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile"));
-
-            }
-        });
-
-        //For facebook login
-        mFacebookSignInButton = (LoginButton) findViewById(R.id.facebook_sign_in_button);
-
-        List<String> permissionNeeds = Arrays.asList("public_profile", "AccessToken");
-        mFacebookSignInButton.registerCallback(mFacebookCallbackManager, new FacebookCallback<LoginResult>() {
+        mFacebookCallbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(mFacebookCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                System.out.println("onSucess");
-                String acessToken = loginResult.getAccessToken().getToken();
-                Log.i("accessToken", acessToken);
+                GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        Log.d("JSON", "" + response.getJSONObject().toString());
+
+                        try {
+
+
+                            name = object.optString("name");
+                            first_name = object.optString("first_name");
+                            last_name = object.optString("last_name");
+                            JSONObject picture = object.getJSONObject("picture");
+                            JSONObject data = picture.getJSONObject("data");
+                            String url = data.optString("url");
+
+                            System.out.println("Url : " + url);
+                            System.out.println("Email : " + email);
+
+
+                            if (object.has("email")) {
+
+                                email = object.optString("email");
+
+                            } else {
+                                email = "";
+                            }
+
+                            if (url == null) {
+                                url = "";
+                            }
+
+
+
+                            sharedPreferenceClass.saveData(object.optString("id"),name,email,url);
+
+                            LoginManager.getInstance().logOut();
+
+
+
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,first_name,last_name,picture.type(large)");
+                graphRequest.setParameters(parameters);
+                graphRequest.executeAsync();
 
             }
-
             @Override
             public void onCancel() {
+                Toast.makeText(LoginActivity.this, "Login Cancel", Toast.LENGTH_LONG).show();
 
             }
 
             @Override
             public void onError(FacebookException error) {
+                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
 
-                System.out.println("onError");
-                Log.v("LoginActivity", exception.getCause().toString());
             }
         });
 
+        sharedPref = getSharedPreferences("Login",MODE_PRIVATE);
 
-    //Google sign in
-        googleSignIn = findViewById(R.id.googel_sign_in_button);
-        googleSignIn.setSize(SignInButton.SIZE_STANDARD);
-        googleSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signInGoogle();
-            }
-        });
 
-    }
-
-    private void signInGoogle() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, 101);
-
-    }
-
-    @Override
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        super.onActivityResult(requestCode, resultCode, data);
-        mFacebookCallbackManager.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
-    }
-
-    private void handleSignInResult(Task<GoogleSignInAccount> task) {
-        try {
-            GoogleSignInAccount account = task.getResult(ApiException.class);
-
-            // Signed in successfully, show authenticated UI.
-            updateUI(account);
-        } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-            updateUI(null);
-        }
-
-    }
-
-    private void updateUI(GoogleSignInAccount account) {
-        Intent intent = new Intent(this, ProfileActivityFromGoogle.class);
-        intent.putExtra(ProfileActivityFromGoogle.GOOGLE_ACCOUNT, account);
-
-        startActivity(intent);
-        finish();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        GoogleSignInAccount alreadyloggedAccount = GoogleSignIn.getLastSignedInAccount(this);
-        if (alreadyloggedAccount != null) {
-            Toast.makeText(this, "Already Logged In", Toast.LENGTH_SHORT).show();
-            updateUI(alreadyloggedAccount);
-        } else {
-            Log.d(TAG, "Not logged in");
+
+        try {
+            if (sharedPreferenceClass.isLoggedIn()){
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+
     }
 
-    public void onClick(View v) {
-        if (v == loginImg) {
-            LoginManager.getInstance().logInWithReadPermissions(
-                    this,
-                    Arrays.asList("user_photos", "email", "user_birthday", "public_profile")
-            );
+    @Override
+        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+            mFacebookCallbackManager.onActivityResult(requestCode,resultCode,data);
+            super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQ_CODE) {
+
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            GoogleSignInAccount account = null;
+            try {
+                account = task.getResult(ApiException.class);
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+
+
+            if (account.getPhotoUrl() == null){
+                sharedPreferenceClass.saveData(account.getId(),account.getDisplayName(),account.getEmail(),"");
+            }else{
+                sharedPreferenceClass.saveData(account.getId(),account.getDisplayName(),account.getEmail(),account.getPhotoUrl().toString());
+            }
+
+            System.out.println("TokenID : "+account.getId());
         }
     }
-
-    
-
 
     private void intitWidgets() {
-        email = findViewById(R.id.emailEdittextr);
-        password = findViewById(R.id.passwordEditextr);
+        emailL = findViewById(R.id.emailEdittextr);
+        passwordL = findViewById(R.id.passwordEditextr);
         login = findViewById(R.id.login);
         frgt = findViewById(R.id.frgtTxt);
         crtAcnt = findViewById(R.id.crtAcnt);
         here = findViewById(R.id.here);
-        loginImg = findViewById(R.id.fbIcon);
+        myFbSigninBtn = findViewById(R.id.fbIcon);
+        myGoogleSigninBtn = findViewById(R.id.googleIcon);
     }
 }

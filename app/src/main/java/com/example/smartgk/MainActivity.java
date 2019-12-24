@@ -28,13 +28,12 @@ import android.widget.Toast;
 
 import com.example.smartgk.Actvities.ProfileActivity;
 import com.example.smartgk.Fragment.AboutFragment;
-import com.example.smartgk.Fragment.BooksFragment;
+import com.example.smartgk.Fragment.HomeFragmentSearch;
 import com.example.smartgk.Fragment.ContactFragment;
-import com.example.smartgk.Fragment.HomeFragmentTabs;
+import com.example.smartgk.Fragment.CourseDetailFragment;
 import com.example.smartgk.Fragment.InvoiceFragment;
 import com.example.smartgk.Adapter.SlidingMenuAdapter;
 import com.example.smartgk.Fragment.CourseFragment;
-import com.example.smartgk.Fragment.HomeMainFragment;
 import com.example.smartgk.Fragment.NewsFragment;
 import com.example.smartgk.Fragment.SettingsFragment;
 import com.example.smartgk.Fragment.SucessStoryFragment;
@@ -206,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 toolbar_title.setText("Home");
 
-                fragmentManager.beginTransaction().replace(R.id.main_content, new HomeFragmentTabs()).addToBackStack(null).commit();
+                fragmentManager.beginTransaction().replace(R.id.main_content, new HomeFragmentSearch()).addToBackStack(null).commit();
                 break;
 
             case 1:
@@ -220,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
                 toolbar_title.setText("Book");
 
-                fragmentManager.beginTransaction().replace(R.id.main_content, new BooksFragment()).addToBackStack(null).commit();
+                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseDetailFragment()).addToBackStack(null).commit();
                 break;
 
 
@@ -255,13 +254,13 @@ public class MainActivity extends AppCompatActivity {
                 fragmentManager.beginTransaction().replace(R.id.main_content, new ContactFragment()).addToBackStack(null).commit();
                 break;
 
-            case 8:
+            case 10:
                 toolbar_title.setText("Settings");
                 fragmentManager.beginTransaction().replace(R.id.main_content, new SettingsFragment()).addToBackStack(null).commit();
                 break;
 
 
-            case 9:
+            case 11:
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_HOLO_LIGHT).create();
 
                 alertDialog.setTitle("Sapna Ko Ghar");

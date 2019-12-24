@@ -7,10 +7,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
-        android:layout_width="384dp"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -34,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_large"
                 android:drawableLeft="@drawable/ic_access_time"
-                android:paddingLeft="@dimen/spacing_medium"
                 android:paddingRight="@dimen/spacing_large"
                 android:text="2019-10-10"
                 app:layout_constraintStart_toStartOf="parent"

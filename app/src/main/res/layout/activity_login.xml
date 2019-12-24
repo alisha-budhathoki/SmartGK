@@ -36,8 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:layout_marginTop="20dp"
-            android:elevation="200dp"
-            app:cardElevation="1dp"
+            app:cardElevation="5.00dp"
             app:cardUseCompatPadding="true"
             app:contentPadding="12dp"
 
@@ -150,7 +149,7 @@
         app:layout_constraintTop_toBottomOf="@+id/googel_sign_in_button"
         />
     <ImageView
-        android:id="@+id/spacing_smlarge"
+        android:id="@+id/googleIcon"
         android:layout_width="@dimen/spacing_smlarge"
         android:layout_height="@dimen/spacing_smlarge"
         android:src="@drawable/google_logo"

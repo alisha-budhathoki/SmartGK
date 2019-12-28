@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainView"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+
+        <TextView
+            android:id="@+id/profTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/heading1"
+            android:text="Profile"
+            android:textColor="@color/mintGreen"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/profImg"
+            android:layout_width="135dp"
+            android:layout_height="145dp"
+            android:layout_marginTop="@dimen/spacing_xmedium"
+            android:src="@drawable/img_black"
+            android:scaleType="fitXY"
+            android:contentDescription="Profile Image"
+            android:layout_marginLeft="@dimen/spacing_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profTxt"
+            />
+
+        <TextView
+            android:id="@+id/proNm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/heading2"
+            android:text="John Doe"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_xmedium"
+            app:layout_constraintStart_toEndOf="@+id/profImg"
+            app:layout_constraintTop_toBottomOf="@+id/profTxt"
+            />
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_xmedium"
+            android:text="Loreum ipsum dolor sit amet, consecutir adipiscing elit. Mascenas semmassa, vestibulum sit amet sapien ut, elefiend sodales enim, Vestibulum luctus lorem nec nibh ultrices tris-"
+            app:layout_constraintStart_toEndOf="@+id/profImg"
+            app:layout_constraintTop_toBottomOf="@+id/proNm"
+            />
+
+        <Button
+            android:id="@+id/edtProf"
+            android:layout_width="68dp"
+            android:layout_height="30dp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/profImg"
+            app:layout_constraintTop_toBottomOf="@+id/desc"
+            android:text="Edit Profile"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_xmedium"
+            android:textColor="@color/white"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:background="@color/mintGreen"
+            />
+        <Button
+            android:id="@+id/chngPw"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:textSize="10sp"
+            android:layout_marginRight="@dimen/spacing_large"
+            app:layout_constraintTop_toBottomOf="@+id/desc"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/mintGreen"
+            android:textColor="@color/white"
+            android:text="Change Password"
+            android:layout_marginTop="@dimen/spacing_xmedium"
+            />
+        <LinearLayout
+            android:id="@+id/linearMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profImg"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:elevation="200dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="12dp"
+                android:layout_marginTop="20dp"
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageView
+                        android:id="@+id/profiIcn"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:src="@drawable/user"></ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="John Doe"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/profiIcn"
+                        android:layout_marginLeft="@dimen/spacing_small"/>
+
+                    <ImageView
+                        android:id="@+id/phnIcn"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profiIcn"
+                        android:src="@drawable/telephone"></ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0000-000-000"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintTop_toBottomOf="@+id/profiIcn"
+                        app:layout_constraintStart_toEndOf="@+id/phnIcn"
+                        android:layout_marginLeft="@dimen/spacing_small"/>
+
+                    <ImageView
+                        android:id="@+id/loctn"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/phnIcn"
+                        android:src="@drawable/loction"></ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="New Baneshwor, Kathmandu, Nepal"
+                        app:layout_constraintTop_toBottomOf="@+id/phnIcn"
+                        app:layout_constraintStart_toEndOf="@+id/loctn"
+                        android:layout_marginLeft="@dimen/spacing_small"/>
+
+                    <ImageView
+                        android:id="@+id/hom"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/loctn"
+                        android:src="@drawable/home"></ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="New Baneshwor, Kathmandu, Nepal"
+                        app:layout_constraintTop_toBottomOf="@+id/loctn"
+                        app:layout_constraintStart_toEndOf="@+id/hom"
+                        android:layout_marginLeft="@dimen/spacing_small"/>
+
+                    <ImageView
+                        android:id="@+id/web"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/hom"
+                        android:src="@drawable/www"></ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="www.johndoe.com.np"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintTop_toBottomOf="@+id/hom"
+                        app:layout_constraintStart_toEndOf="@+id/web"
+                        android:layout_marginLeft="@dimen/spacing_small"/>
+
+                    <ImageView
+                        android:id="@+id/mail"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/web"
+                        android:src="@drawable/envelope"></ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="johmdoe@sample.com"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:layout_constraintTop_toBottomOf="@+id/web"
+                        app:layout_constraintStart_toEndOf="@+id/hom"
+                        android:layout_marginLeft="@dimen/spacing_small"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabsP"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:foregroundGravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearMain"
+            app:tabGravity="fill"
+            app:tabTextAppearance="@style/MineCustomTabText"
+            app:tabIndicatorColor="#fff"
+            app:tabMode="fixed"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:clickable="true"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabTextColor="@color/mintGreen" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpagerP"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            app:layout_constraintTop_toBottomOf="@+id/tabsP"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

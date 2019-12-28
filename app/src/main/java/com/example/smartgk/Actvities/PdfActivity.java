@@ -16,6 +16,8 @@ public class PdfActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pdf);
 
         pdfView1 = (PDFView) findViewById(R.id.pdf1);
-        pdfView1.fromAsset("sample.pdf").load();
+        pdfView1.fromAsset("sample.pdf").defaultPage(1)
+                .enableSwipe(true)
+                .load();
     }
 }

@@ -79,7 +79,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:scaleType="fitXY"
-                    android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_marginRight="@dimen/spacing_large"
                     />
 
@@ -121,6 +120,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler2"
         android:text="Buy Books"
+        android:textSize="@dimen/heading1"
+        android:textStyle="bold"
         android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginLeft="@dimen/spacing_large"
         android:textColor="@color/colorPrimary"
@@ -132,8 +133,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/spacing_large"
         android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_booksTxt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/spacing_xxxxxlarge"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

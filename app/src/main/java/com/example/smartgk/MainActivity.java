@@ -1,5 +1,6 @@
 package com.example.smartgk;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,10 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -26,18 +25,28 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.smartgk.Actvities.ProfileActivity;
+import com.bumptech.glide.Glide;
+import com.example.smartgk.Actvities.LoginActivity;
+import com.example.smartgk.Actvities.SharedPreferenceClass;
 import com.example.smartgk.Fragment.AboutFragment;
+import com.example.smartgk.Fragment.BooksFragment;
 import com.example.smartgk.Fragment.HomeFragmentSearch;
 import com.example.smartgk.Fragment.ContactFragment;
-import com.example.smartgk.Fragment.CourseDetailFragment;
+import com.example.smartgk.Fragment.CourseDetailFragmentWithTabs;
 import com.example.smartgk.Fragment.InvoiceFragment;
 import com.example.smartgk.Adapter.SlidingMenuAdapter;
-import com.example.smartgk.Fragment.CourseFragment;
 import com.example.smartgk.Fragment.NewsFragment;
+import com.example.smartgk.Fragment.ProfileFragment;
 import com.example.smartgk.Fragment.SettingsFragment;
+//import com.example.smartgk.Fragment.SucessStoryFragment;
 import com.example.smartgk.Fragment.SucessStoryFragment;
 import com.example.smartgk.model.ItemSlideMenu;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +54,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     boolean doubleBackToExitPressedOnce = false;
+
+    boolean isCheck = false;
     Button btn;
     private List<ItemSlideMenu> listSliding;
     RelativeLayout mainView, drawerView;
@@ -55,13 +66,25 @@ public class MainActivity extends AppCompatActivity {
     TextView toolbar_title, txt_userName;
     ImageView drawer_image, register_image, logOut, userImage;
     String user_type;
-
+    SharedPreferenceClass sharedPreferenceClass;
+    GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbarM);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestId()
+                .requestProfile()
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
+
+        sharedPreferenceClass = new SharedPreferenceClass(getApplicationContext());
 
         listViewSliding = (ListView) findViewById(R.id.lv_sliding_menu);
         //  lv_register = (ListView) findViewById(R.id.lv_register);
@@ -74,16 +97,35 @@ public class MainActivity extends AppCompatActivity {
         userImage = findViewById(R.id.user_image);
         txt_userName = findViewById(R.id.user_name);
 
+        sharedPreferenceClass = new SharedPreferenceClass(getApplicationContext());
+        Glide
+                .with(getApplicationContext())
+                .load(sharedPreferenceClass.getPic())
+                .centerCrop()
+                .into(userImage);
+
         txt_userName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(intent);
+                if (sharedPreferenceClass.isLoggedIn()) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_content, new ProfileFragment()).addToBackStack(null).commit();
+                    drawerLayout.closeDrawer(drawerView);
+//                    FragmentTransaction fragmentManager = getSupportFragmentManager().beginTransaction();
+//                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+//                    startActivity(intent);
+                }
+                else {
+                    Intent loginintent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(loginintent);
+                }
             }
         });
 
-        listSliding = new ArrayList<>();
 
+
+
+
+        listSliding = new ArrayList<>();
         listSliding.add(new ItemSlideMenu(R.drawable.home, "Home"));
         listSliding.add(new ItemSlideMenu(R.drawable.loction, "Courses"));
         listSliding.add(new ItemSlideMenu(R.drawable.envelope, "Book"));
@@ -202,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         switch (pos) {
 
+
             case 0:
                 toolbar_title.setText("Home");
 
@@ -211,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 toolbar_title.setText("Courses");
 
-                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseFragment()).addToBackStack(null).commit();
+                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseDetailFragmentWithTabs()).addToBackStack(null).commit();
                 break;
 
 
@@ -219,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
                 toolbar_title.setText("Book");
 
-                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseDetailFragment()).addToBackStack(null).commit();
+                fragmentManager.beginTransaction().replace(R.id.main_content, new BooksFragment()).addToBackStack(null).commit();
                 break;
 
 
@@ -263,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
             case 11:
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_HOLO_LIGHT).create();
 
-                alertDialog.setTitle("Sapna Ko Ghar");
+                alertDialog.setTitle("Smart Gk");
                 alertDialog.setMessage(Html.fromHtml("Would you like to logout?"));
 
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "No",
@@ -276,12 +319,12 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "LogOut",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
-                                sharedPreferences.edit().clear().commit();
-                                register_image.setVisibility(View.VISIBLE);
-                                logOut.setVisibility(View.GONE);
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                dialog.dismiss();
+
+                                signOut();
+
+//
+
+
                             }
                         });
 
@@ -322,5 +365,30 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
             return;
         }
+    }
+
+    private void signOut() {
+        try {
+            mGoogleSignInClient.signOut()
+                    .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            sharedPreferenceClass.isLooggedIn(false);
+                            finish();
+                        }
+                    });
+
+            LoginManager.getInstance().logOut();
+
+//            SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+//                                sharedPreferences.edit().clear().commit();
+//                                register_image.setVisibility(View.VISIBLE);
+//                                logOut.setVisibility(View.GONE);
+//                               finish();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+//       GoogleSignInClient
+
     }
 }

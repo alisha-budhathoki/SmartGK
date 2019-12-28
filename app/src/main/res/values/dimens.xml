@@ -32,6 +32,8 @@
     <dimen name="spacing_xxxxlarge">65dp</dimen>
     <dimen name="spacing_xxxxxlarge">80dp</dimen>
     <dimen name="standard_margin">20dp</dimen>
+    <dimen name="cardSizeAdapter">170dp</dimen>
+
 
 
 

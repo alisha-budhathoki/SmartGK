@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Actvities.ExamFormActivity">
+
+    <TextView
+        android:id="@+id/examNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exam Name goes here"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/heading1"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/timeRemainingTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_large"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Time Remaining: 00:00"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/heading2"
+        android:layout_marginTop="@dimen/spacing_large"
+        app:layout_constraintTop_toBottomOf="@+id/examNameText"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardExamForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        app:layout_constraintTop_toBottomOf="@+id/timeRemainingTxt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/noticeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. Question goes here"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:textSize="@dimen/heading3"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Answer one"
+                android:layout_marginLeft="@dimen/spacing_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/noticeTitle" />
+
+
+
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Answer Two"
+                android:layout_marginLeft="@dimen/spacing_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radio1" />
+
+
+
+
+            <RadioButton
+                android:id="@+id/radio3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Answer Three"
+                android:layout_marginLeft="@dimen/spacing_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radio2" />
+
+
+
+
+            <RadioButton
+                android:id="@+id/radio4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:text="Answer Four"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radio3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/spacing_large"/>
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Answer"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardExamForm"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:background="@color/grey"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

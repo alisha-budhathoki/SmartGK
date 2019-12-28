@@ -3,71 +3,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<androidx.cardview.widget.CardView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:cardElevation="5dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
->
-
-    <LinearLayout
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:cardElevation="5dp"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/spacing_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:lineSpacingExtra="12sp"
-            android:padding="5dp"
-            android:text="Pd Smart Education"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/aboutUsDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_light"
-            android:lineSpacingExtra="8sp"
-            android:padding="15dp"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/logoAbt"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/logo1"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:fontFamily="@font/roboto"
-            android:lineSpacingExtra="12sp"
-            android:padding="5dp"
-            android:text="Designed and developed by Creatu Developers"
-            android:textColor="@color/black"
-            android:textSize="11dp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/abtSmartGk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/spacing_large"
+                android:text="Smart Gk"
+                android:textSize="@dimen/heading1"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logoAbt"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-        <TextView
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_light"
-            android:lineSpacingExtra="8sp"
-            android:padding="10dp"
-            android:text="Copyright © 2019 SmartGK Education "
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/descAboutSmartGk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:text="Smart Kid General Knowledge Olympiad 2018 will be conducted for Class 1st to Class 10th students for testing their knowledge in different subjects. The GK Olympiad by Silverzone Foundation will be conducted on November 20 and December 13, 2018. Smart Kid GK Olympiad 2018 is a single level exam. The students who want to participate in Silverzone Smart Kid General Knowledge Olympiad 2018 can check here the exam pattern, syllabus and all necessary details like eligibility and awards mentioned in this article."
+                app:layout_constraintTop_toBottomOf="@+id/abtSmartGk"
+                app:layout_constraintStart_toStartOf="parent"
+                />
 
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

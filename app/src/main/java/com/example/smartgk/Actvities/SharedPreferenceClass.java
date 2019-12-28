@@ -3,7 +3,7 @@ package com.example.smartgk.Actvities;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-class SharedPreferenceClass {
+public class SharedPreferenceClass {
     Context context;
     SharedPreferences sp;
 
@@ -20,13 +20,35 @@ class SharedPreferenceClass {
         editor.putString("pic",pic);
         editor.apply();
     }
-    public void isLooggedIn(){
+    public void isLooggedIn(boolean login){
         SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean("isLoogedIn",true);
+        editor.putBoolean("isLoogedIn",login);
         editor.apply();
     }
 
+//    public void isLooggedIn(){
+//        SharedPreferences.Editor editor = sp.edit();
+//        editor.putBoolean("isLoogedIn",true);
+//        editor.apply();
+//    }
+
     public boolean isLoggedIn(){
         return sp.getBoolean("isLoogedIn",false);
+    }
+
+    public String getName(){
+        return sp.getString("name","");
+    }
+
+    public String getEmail(){
+        return sp.getString("email","");
+    }
+
+    public String getPic(){
+        return sp.getString("pic","");
+    }
+
+    public String getUid(){
+        return sp.getString("u_id","");
     }
 }

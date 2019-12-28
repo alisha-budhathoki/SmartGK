@@ -140,6 +140,7 @@
             android:layout_below="@+id/linear"
             android:layout_width="200dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/spacing_large"
             android:id="@+id/lv_sliding_menu"
             android:background="@android:color/transparent"
             android:choiceMode="singleChoice"

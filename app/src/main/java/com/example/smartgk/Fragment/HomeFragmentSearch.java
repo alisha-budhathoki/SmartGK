@@ -1,6 +1,5 @@
 package com.example.smartgk.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Actvities.ViewCourseDetailActivity;
 import com.example.smartgk.Adapter.BestCoursesAdapter;
 import com.example.smartgk.Adapter.BuyBooksAdapter;
 import com.example.smartgk.Adapter.NewCourseAdapter;
@@ -26,9 +24,7 @@ import com.example.smartgk.model.NewCourses;
 import java.util.ArrayList;
 
 public class HomeFragmentSearch extends Fragment {
-    RelativeLayout relativeLayout1;
-    CardView cardView1;
-    private RecyclerView recyclerView1, recyclerView2;
+    private RecyclerView recyclerView1, recyclerView2, recyclerView3;
     private ArrayList<BestCourses> mList;
     BestCoursesAdapter bestCoursesAdapter;
     private ArrayList<NewCourses> mList2;
@@ -40,8 +36,12 @@ public class HomeFragmentSearch extends Fragment {
 
     private int[] myImageList = new int[]{R.drawable.book1, R.drawable.book1,R.drawable.book1, R.drawable.book1,R.drawable.book1};
     private String[] myPriceNameList = new String[]{"100","380" ,"1300","1500","540"};
-    private String[] myBookTitle = new String[]{"Lohitutu Resturant and fast food","Coffee pasal - During the day" ,"Cafe De Pattrick","Bota Momos","Nanglo Bar and Resturant"};
+    private String[] myCourseTitle = new String[]{"Lohitutu Resturant and fast food","Coffee pasal - During the day" ,"Cafe De Pattrick","Bota Momos","Nanglo Bar and Resturant"};
 
+
+    private int[] myBookImageList = new int[]{R.drawable.pic_alchemist, R.drawable.pic_brave,R.drawable.pic_leanin, R.drawable.pic_brave,R.drawable.pic_alchemist};
+    private String[] myBookPriceList = new String[]{"100","380" ,"1300","1500","540"};
+    private String[] myBookTitle = new String[]{"Alchemist","Brave" ,"Lean in","Brave","Alchemist"};
 
 
     @Nullable
@@ -50,7 +50,7 @@ public class HomeFragmentSearch extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home_search, container, false);
 
         recyclerView1 = view.findViewById(R.id.recycler1);
-        mList = seeBooks();
+        mList = seeBestCourses();
         bestCoursesAdapter = new BestCoursesAdapter(getContext(), mList);
         recyclerView1.setAdapter(bestCoursesAdapter);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -63,7 +63,29 @@ public class HomeFragmentSearch extends Fragment {
         recyclerView2.setAdapter(newCourseAdapter);
         recyclerView2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
-return view;
+
+        //For Books
+        recyclerView3 = view.findViewById(R.id.recycler3);
+        mList3 = seeBooks();
+        buyBooksAdapter = new BuyBooksAdapter(getContext(), mList3);
+        recyclerView3.setAdapter(buyBooksAdapter);
+        recyclerView3.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+
+        return view;
+    }
+
+    private ArrayList<BuyBooks> seeBooks() {
+        ArrayList<BuyBooks> list3 = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            BuyBooks buyBooks = new BuyBooks();
+            buyBooks.setBookImg(myBookImageList[i]);
+            buyBooks.setBookName(myBookTitle[i]);
+            buyBooks.setBookPrice(myBookPriceList[i]);
+
+            list3.add(buyBooks);
+        }
+        return list3;
     }
 
 
@@ -73,7 +95,7 @@ return view;
                 NewCourses newCourses = new NewCourses();
                 newCourses.setCoursePriceN(myPriceNameList[i]);
                 newCourses.setImageN(myImageList[i]);
-                newCourses.setCourseNameN(myBookTitle[i]);
+                newCourses.setCourseNameN(myCourseTitle[i]);
 
                 list2.add(newCourses);
             }
@@ -81,13 +103,13 @@ return view;
         }
 
 
-    private ArrayList<BestCourses> seeBooks() {
+    private ArrayList<BestCourses> seeBestCourses() {
         ArrayList<BestCourses> list = new ArrayList<>();
         for(int i = 0; i < 5; i++){
             BestCourses bestCourses = new BestCourses();
             bestCourses.setCoursePrice(myPriceNameList[i]);
             bestCourses.setImage(myImageList[i]);
-            bestCourses.setCourseName(myBookTitle[i]);
+            bestCourses.setCourseName(myCourseTitle[i]);
 
             list.add(bestCourses);
         }

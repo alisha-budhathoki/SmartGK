@@ -14,7 +14,7 @@ import com.example.smartgk.Actvities.ViewPage;
 import com.example.smartgk.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class CourseDetailFragment extends Fragment {
+public class CourseDetailFragmentWithTabs extends Fragment {
     private TabLayout tabLayout;
     public ViewPager viewPager;
 
@@ -25,11 +25,11 @@ public class CourseDetailFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabs);
         viewPager = view.findViewById(R.id.viewpager);
         ViewPage ViewPage = new ViewPage(getFragmentManager());
-        ViewPage.AddFragment(new VideosFragment(), "VIDEOS");
-        ViewPage.AddFragment(new NotesFragment(), "NOTES");
-        ViewPage.AddFragment(new LiveClassFragment(), "LIVE CLASS");
-        ViewPage.AddFragment(new ExamFragment(), "EXAM");
-        ViewPage.AddFragment(new NoticeFragment(), "NOTICE");
+        ViewPage.AddFragment(new VideosFragment(), "Videos");
+        ViewPage.AddFragment(new NotespdfFragment(), "Notes");
+        ViewPage.AddFragment(new LiveClassFragment(), "Live Class");
+        ViewPage.AddFragment(new ExamFragment(), "Exam");
+        ViewPage.AddFragment(new NoticeFragment(), "Notice");
 
         viewPager.setAdapter(ViewPage);
         tabLayout.setupWithViewPager(viewPager);

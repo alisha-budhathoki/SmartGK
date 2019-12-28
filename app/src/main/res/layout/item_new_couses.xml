@@ -6,7 +6,7 @@
     android:layout_width="240dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_large"
-    android:layout_marginLeft="@dimen/spacing_large">
+    >
     <RelativeLayout
         android:id="@+id/rel2"
         android:layout_width="170dp"
@@ -16,6 +16,8 @@
         app:layout_constraintEnd_toStartOf="@+id/card2">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/A2"
+            app:cardElevation="5.00dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             >

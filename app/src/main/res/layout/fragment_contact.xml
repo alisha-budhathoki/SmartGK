@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/feedbackTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Feedback"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/heading1"
+        android:drawablePadding="10dp"
+        android:layout_marginLeft="@dimen/spacing_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardFedbck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5.00dp"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedbackTxt">
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="16dp">
+
+            <EditText
+                android:id="@+id/emailEdittextr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/grey"
+                android:drawableRight="@drawable/ic_mail_black_24dp"
+                android:drawablePadding="10dp"
+                android:hint="Enter Email Address"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/passwordEditextr"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:backgroundTint="@color/grey"
+                app:passwordToggleEnabled="true"
+                android:inputType="textMultiLine"
+                android:layout_marginBottom="@dimen/spacing_large"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailEdittextr" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/feedbackbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Feedback"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardFedbck"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:background="@color/grey"
+        />
+
+    <TextView
+        android:id="@+id/moreInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="For more information"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/heading1"
+        android:drawablePadding="10dp"
+        android:layout_marginLeft="@dimen/spacing_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedbackbtn" />
+
+
+    <LinearLayout
+        android:id="@+id/linearMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moreInfo"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:elevation="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="12dp"
+            app:cardElevation="5.00dp"
+            android:layout_marginTop="20dp"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/profiIcn"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/user"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Smart Gk"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profiIcn"
+                    android:layout_marginLeft="@dimen/spacing_small"/>
+
+                <ImageView
+                    android:id="@+id/phnIcn"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profiIcn"
+                    android:src="@drawable/telephone"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0000-000-000"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintTop_toBottomOf="@+id/profiIcn"
+                    app:layout_constraintStart_toEndOf="@+id/phnIcn"
+                    android:layout_marginLeft="@dimen/spacing_small"/>
+
+                <ImageView
+                    android:id="@+id/loctn"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phnIcn"
+                    android:src="@drawable/loction"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:text="New Baneshwor, Kathmandu, Nepal"
+                    app:layout_constraintTop_toBottomOf="@+id/phnIcn"
+                    app:layout_constraintStart_toEndOf="@+id/loctn"
+                    android:layout_marginLeft="@dimen/spacing_small"/>
+
+
+
+                <ImageView
+                    android:id="@+id/web"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/loctn"
+                    android:src="@drawable/www"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="www.johndoe.com.np"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintTop_toBottomOf="@+id/loctn"
+                    app:layout_constraintStart_toEndOf="@+id/web"
+                    android:layout_marginLeft="@dimen/spacing_small"/>
+
+                <ImageView
+                    android:id="@+id/mail"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/web"
+                    android:src="@drawable/envelope"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="johmdoe@sample.com"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintTop_toBottomOf="@+id/web"
+                    app:layout_constraintStart_toEndOf="@+id/mail"
+                    android:layout_marginLeft="@dimen/spacing_small"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

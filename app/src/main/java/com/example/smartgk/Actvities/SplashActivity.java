@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Window;
 
+import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 
 import java.text.SimpleDateFormat;
@@ -42,7 +43,7 @@ Timer timer;
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 Log.i("JO", "run");
-                Intent in = new Intent(SplashActivity.this,LoginActivity.class);
+                Intent in = new Intent(SplashActivity.this, MainActivity.class);
                 //in.putExtra("refreshclick", clickRefreshButton);
                 //in.putExtra("Current_Date", formattedDate);
                 //  in.putExtra("ImeiId", imeid);

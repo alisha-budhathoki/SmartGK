@@ -13,6 +13,9 @@ import com.example.smartgk.Actvities.Pdf2Activity;
 import com.example.smartgk.Actvities.PdfActivity;
 import com.example.smartgk.R;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+
 public class NotesFragment extends Fragment {
     CardView cardView1, cardView2;
 
@@ -20,6 +23,10 @@ public class NotesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
+
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
         cardView1 = view.findViewById(R.id.cardN1);
         cardView2 = view.findViewById(R.id.cardN2);

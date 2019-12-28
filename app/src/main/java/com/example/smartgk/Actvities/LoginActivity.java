@@ -172,8 +172,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
                             sharedPreferenceClass.saveData(object.optString("id"),name,email,url);
+                            sharedPreferenceClass.isLooggedIn(true);
 
-                            LoginManager.getInstance().logOut();
+                            Intent goIntent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(goIntent);
 
 
 
@@ -182,14 +184,14 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
+//Login bhayera aba uninstall garnu parchha
                     }
                 });
                 Bundle parameters = new Bundle();
                 parameters.putString("fields", "id,name,first_name,last_name,picture.type(large)");
                 graphRequest.setParameters(parameters);
                 graphRequest.executeAsync();
-
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
             @Override
             public void onCancel() {
@@ -231,6 +233,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if (requestCode == REQ_CODE) {
 
+            System.out.println("I am here!!!");
+
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             GoogleSignInAccount account = null;
             try {
@@ -241,9 +245,13 @@ public class LoginActivity extends AppCompatActivity {
 
 
             if (account.getPhotoUrl() == null){
+                sharedPreferenceClass.isLooggedIn(true);
                 sharedPreferenceClass.saveData(account.getId(),account.getDisplayName(),account.getEmail(),"");
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }else{
+                sharedPreferenceClass.isLooggedIn(true);
                 sharedPreferenceClass.saveData(account.getId(),account.getDisplayName(),account.getEmail(),account.getPhotoUrl().toString());
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
 
             System.out.println("TokenID : "+account.getId());

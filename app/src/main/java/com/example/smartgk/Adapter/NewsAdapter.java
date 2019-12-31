@@ -1,6 +1,8 @@
 package com.example.smartgk.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartgk.Fragment.NewsDetailFragment;
+import com.example.smartgk.Fragment.NewsFragment;
 import com.example.smartgk.R;
 import com.example.smartgk.model.News;
 
@@ -19,10 +26,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
     List<News> mList;
     Context context;
+    NewsFragment newsfragment;
 
-    public NewsAdapter(Context context, List<News> mList) {
+    public NewsAdapter(Context context, List<News> mList, NewsFragment newsFragment) {
         this.context = context;
         this.mList = mList;
+        this.newsfragment = newsFragment;
     }
 
     @NonNull
@@ -34,12 +43,23 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         final News news = mList.get(position);
         holder.newsImage.setImageResource(news.getNewsImg());
         holder.newsDate.setText(news.getNewsDate());
         holder.newsDesc.setText(news.getNewsDesc());
-
+        holder.cardNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new NewsDetailFragment();
+                Bundle args = new Bundle();
+                FragmentTransaction transaction = newsfragment.getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_content, fragment);
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
     }
 
@@ -52,13 +72,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         RecyclerView recyclerView;
         ImageView newsImage;
         TextView newsDate, newsDesc;
+        CardView cardNews;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
+            cardNews = itemView.findViewById(R.id.cardNews);
             newsImage = (ImageView) itemView.findViewById(R.id.newsImg);
             newsDate = itemView.findViewById(R.id.newsDate);
             newsDesc = itemView.findViewById(R.id.newsDesc);
+
         }
 
 

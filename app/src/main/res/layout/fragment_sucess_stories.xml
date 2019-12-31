@@ -12,6 +12,7 @@
     app:layout_constraintTop_toTopOf="parent"
     android:text="Sucess Stories"
     android:textSize="@dimen/heading1"
+    android:textStyle="bold"
     android:textColor="@color/colorPrimary"
     android:layout_marginTop="@dimen/spacing_large"
     android:layout_marginLeft="@dimen/spacing_large"
@@ -21,11 +22,11 @@
         android:id="@+id/recyclerSucess"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
+       android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSuccessStories"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
 

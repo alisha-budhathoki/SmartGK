@@ -8,9 +8,6 @@
         android:id="@+id/recyclerReviews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />

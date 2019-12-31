@@ -6,12 +6,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardPdfFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardElevation="5.00dp"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
+        style="@style/cardViewStandard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -41,7 +36,7 @@
                 app:layout_constraintStart_toEndOf="@+id/pdfNoteImg"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:textSize="@dimen/heading1"
+                android:textSize="@dimen/heading3"
                 android:textStyle="bold"
                 android:layout_marginLeft="@dimen/spacing_large"
                 />
@@ -51,7 +46,6 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_file_download_black_24dp"
-                app:layout_constraintStart_toEndOf="@+id/pdf_name"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginLeft="@dimen/spacing_large"

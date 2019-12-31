@@ -31,8 +31,8 @@
         <ImageView
             android:id="@+id/profImg"
             android:layout_width="135dp"
-            android:layout_height="145dp"
-            android:layout_marginTop="@dimen/spacing_xmedium"
+            android:layout_height="155dp"
+            android:layout_marginTop="@dimen/spacing_large"
             android:src="@drawable/img_black"
             android:scaleType="fitXY"
             android:contentDescription="Profile Image"
@@ -49,7 +49,7 @@
             android:text="John Doe"
             android:textStyle="bold"
             android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginTop="@dimen/spacing_xmedium"
+            android:layout_marginTop="@dimen/spacing_large"
             app:layout_constraintStart_toEndOf="@+id/profImg"
             app:layout_constraintTop_toBottomOf="@+id/profTxt"
             />
@@ -78,17 +78,17 @@
             android:textColor="@color/white"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:background="@color/mintGreen"
+            android:background="@color/colorPrimary"
             />
         <Button
             android:id="@+id/chngPw"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:textSize="10sp"
+            android:background="@color/colorPrimary"
             android:layout_marginRight="@dimen/spacing_large"
             app:layout_constraintTop_toBottomOf="@+id/desc"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/mintGreen"
             android:textColor="@color/white"
             android:text="Change Password"
             android:layout_marginTop="@dimen/spacing_xmedium"
@@ -121,8 +121,8 @@
                     >
                     <ImageView
                         android:id="@+id/profiIcn"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/profIconWidth"
+                        android:layout_height="@dimen/profIconHeight"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:src="@drawable/user"></ImageView>
@@ -136,8 +136,8 @@
 
                     <ImageView
                         android:id="@+id/phnIcn"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/profIconWidth"
+                        android:layout_height="@dimen/profIconHeight"
                         android:layout_marginTop="@dimen/spacing_small"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/profiIcn"
@@ -153,8 +153,8 @@
 
                     <ImageView
                         android:id="@+id/loctn"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/profIconWidth"
+                        android:layout_height="@dimen/profIconHeight"
                         android:layout_marginTop="@dimen/spacing_small"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/phnIcn"
@@ -170,8 +170,8 @@
 
                     <ImageView
                         android:id="@+id/hom"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/profIconWidth"
+                        android:layout_height="@dimen/profIconHeight"
                         android:layout_marginTop="@dimen/spacing_small"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/loctn"
@@ -187,8 +187,8 @@
 
                     <ImageView
                         android:id="@+id/web"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/profIconWidth"
+                        android:layout_height="@dimen/profIconHeight"
                         android:layout_marginTop="@dimen/spacing_small"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/hom"
@@ -204,8 +204,8 @@
 
                     <ImageView
                         android:id="@+id/mail"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/profIconWidth"
+                        android:layout_height="@dimen/profIconHeight"
                         android:layout_marginTop="@dimen/spacing_small"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/web"
@@ -235,12 +235,12 @@
             app:tabGravity="fill"
             app:tabTextAppearance="@style/MineCustomTabText"
             app:tabIndicatorColor="#fff"
-            app:tabMode="fixed"
+            app:tabMode="scrollable"
             android:layout_marginLeft="@dimen/spacing_large"
             android:layout_marginRight="@dimen/spacing_large"
             android:clickable="true"
             app:tabBackground="@drawable/tab_selector"
-            app:tabTextColor="@color/mintGreen" />
+            app:tabTextColor="@color/colorPrimary" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpagerP"

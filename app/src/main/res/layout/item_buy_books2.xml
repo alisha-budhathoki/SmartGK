@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_large"
     >
@@ -12,7 +12,7 @@
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explorTxt"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.cardview.widget.CardView
@@ -22,10 +22,10 @@
             android:layout_height="wrap_content"
             >
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:id="@+id/course_img_bbokfr"
+                    android:id="@+id/book_img_bbokfr"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:src="@drawable/pic_alchemist"
@@ -39,17 +39,18 @@
                     android:id="@+id/title_name_bbokfr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="Book Name Goes Here"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/course_img_bbokfr"
+                    app:layout_constraintTop_toBottomOf="@+id/book_img_bbokfr"
 
                     />
                 <TextView
-                    android:id="@+id/course_price_bbokfr"
+                    android:id="@+id/book_price_bbokfr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rs. 1500/-"
-                    android:textColor="@color/mintGreen"
+                    android:textColor="@color/colorPrimary"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/title_name_bbokfr"
 

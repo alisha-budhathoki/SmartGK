@@ -1,7 +1,7 @@
 package com.example.smartgk.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Actvities.BookDetailsActivity;
+import com.example.smartgk.Fragment.BookDetailsFragment;
+import com.example.smartgk.Fragment.BooksFragment;
 import com.example.smartgk.R;
 import com.example.smartgk.model.BuyBooks;
 
@@ -22,10 +25,13 @@ public class BuyBooksAdapter2 extends RecyclerView.Adapter<BuyBooksAdapter2.MyVi
 
     List<BuyBooks> mList;
     Context context;
+    BooksFragment booksFragment;
 
-    public BuyBooksAdapter2(Context context, List<BuyBooks> mList){
+
+    public BuyBooksAdapter2(Context context, List<BuyBooks> mList, BooksFragment booksFragment){
         this.context = context;
         this.mList = mList;
+        this.booksFragment = booksFragment;
     }
 
     @NonNull
@@ -45,8 +51,13 @@ public class BuyBooksAdapter2 extends RecyclerView.Adapter<BuyBooksAdapter2.MyVi
         holder.booksCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intoBookSetails = new Intent(v.getContext(), BookDetailsActivity.class);
-                context.startActivity(intoBookSetails);
+                Fragment fragment = new BookDetailsFragment();
+                Bundle args = new Bundle();
+                FragmentTransaction transaction = booksFragment.getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_content, fragment);
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
     }
@@ -64,9 +75,9 @@ public class BuyBooksAdapter2 extends RecyclerView.Adapter<BuyBooksAdapter2.MyVi
             super(itemView);
 
             booksCard = itemView.findViewById(R.id.cardA3_bbokfr);
-            image = (ImageView) itemView.findViewById(R.id.course_img_bbokfr);
+            image = (ImageView) itemView.findViewById(R.id.book_img_bbokfr);
             bookTitle = itemView.findViewById(R.id.title_name_bbokfr);
-            bookPrice = itemView.findViewById(R.id.course_price_bbokfr);
+            bookPrice = itemView.findViewById(R.id.book_price_bbokfr);
         }
     }
 }

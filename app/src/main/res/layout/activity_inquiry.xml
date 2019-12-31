@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainInquiry"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -47,12 +48,9 @@
 
                 <EditText
                     android:id="@+id/emailInquire"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/SingnUpINEditText"
                     android:hint="Enter Email Address"
-                    android:backgroundTint="@color/grey"
                     android:drawableRight="@drawable/ic_email"
-                    android:drawablePadding="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -79,18 +77,13 @@
 
     <Button
         android:id="@+id/btnInquire"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/defaultButton"
         android:text="Inquire"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearMainInquire"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:background="@color/grey"
         />
 
     <TextView

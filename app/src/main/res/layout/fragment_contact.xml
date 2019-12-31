@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Feedback"
+        android:textStyle="bold"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/heading1"
         android:drawablePadding="10dp"
@@ -38,11 +39,8 @@
 
             <EditText
                 android:id="@+id/emailEdittextr"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/grey"
+                style="@style/SingnUpINEditText"
                 android:drawableRight="@drawable/ic_mail_black_24dp"
-                android:drawablePadding="10dp"
                 android:hint="Enter Email Address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -70,16 +68,11 @@
 
     <Button
         android:id="@+id/feedbackbtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/defaultButton"
         android:text="Feedback"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardFedbck"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:background="@color/grey"
         />
 
     <TextView
@@ -89,10 +82,11 @@
         android:text="For more information"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/heading1"
+        android:textStyle="bold"
         android:drawablePadding="10dp"
         android:layout_marginLeft="@dimen/spacing_large"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_xlarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feedbackbtn" />
 
@@ -124,8 +118,8 @@
                 >
                 <ImageView
                     android:id="@+id/profiIcn"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/profIconWidth"
+                    android:layout_height="@dimen/profIconHeight"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:src="@drawable/user"></ImageView>
@@ -139,8 +133,8 @@
 
                 <ImageView
                     android:id="@+id/phnIcn"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/profIconWidth"
+                    android:layout_height="@dimen/profIconHeight"
                     android:layout_marginTop="@dimen/spacing_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/profiIcn"
@@ -156,8 +150,8 @@
 
                 <ImageView
                     android:id="@+id/loctn"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/profIconWidth"
+                    android:layout_height="@dimen/profIconHeight"
                     android:layout_marginTop="@dimen/spacing_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/phnIcn"
@@ -175,8 +169,8 @@
 
                 <ImageView
                     android:id="@+id/web"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/profIconWidth"
+                    android:layout_height="@dimen/profIconHeight"
                     android:layout_marginTop="@dimen/spacing_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/loctn"
@@ -192,8 +186,8 @@
 
                 <ImageView
                     android:id="@+id/mail"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/profIconWidth"
+                    android:layout_height="@dimen/profIconHeight"
                     android:layout_marginTop="@dimen/spacing_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/web"

@@ -30,6 +30,7 @@ import com.example.smartgk.Actvities.LoginActivity;
 import com.example.smartgk.Actvities.SharedPreferenceClass;
 import com.example.smartgk.Fragment.AboutFragment;
 import com.example.smartgk.Fragment.BooksFragment;
+import com.example.smartgk.Fragment.CourseFragmentDrawer;
 import com.example.smartgk.Fragment.HomeFragmentSearch;
 import com.example.smartgk.Fragment.ContactFragment;
 import com.example.smartgk.Fragment.CourseDetailFragmentWithTabs;
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 .load(sharedPreferenceClass.getPic())
                 .centerCrop()
                 .into(userImage);
+        txt_userName.setText(sharedPreferenceClass.getName());
 
         txt_userName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
         listSliding.add(new ItemSlideMenu(R.drawable.envelope, "Book"));
         listSliding.add(new ItemSlideMenu(R.drawable.loction, "News"));
         listSliding.add(new ItemSlideMenu(R.drawable.like, "Sucess story"));
-        listSliding.add(new ItemSlideMenu(R.drawable.ic_invoice, "Invoice"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_check, "About"));
         listSliding.add(new ItemSlideMenu(R.drawable.loction, "Contact"));
 
@@ -254,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 toolbar_title.setText("Courses");
 
-                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseDetailFragmentWithTabs()).addToBackStack(null).commit();
+                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseFragmentDrawer()).addToBackStack(null).commit();
                 break;
 
 
@@ -281,29 +282,26 @@ public class MainActivity extends AppCompatActivity {
                 fragmentManager.beginTransaction().replace(R.id.main_content, new SucessStoryFragment()).addToBackStack(null).commit();
                 break;
 
-            case 5:
-                toolbar_title.setText("Invoice");
-                fragmentManager.beginTransaction().replace(R.id.main_content, new InvoiceFragment()).addToBackStack(null).commit();
-                break;
 
-            case 6:
+
+            case 5:
 
                 toolbar_title.setText("About");
                 fragmentManager.beginTransaction().replace(R.id.main_content, new AboutFragment()).addToBackStack(null).commit();
                 break;
 
-            case 7:
+            case 6:
                 toolbar_title.setText("Contact");
                 fragmentManager.beginTransaction().replace(R.id.main_content, new ContactFragment()).addToBackStack(null).commit();
                 break;
 
-            case 10:
+            case 9:
                 toolbar_title.setText("Settings");
                 fragmentManager.beginTransaction().replace(R.id.main_content, new SettingsFragment()).addToBackStack(null).commit();
                 break;
 
 
-            case 11:
+            case 10:
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_HOLO_LIGHT).create();
 
                 alertDialog.setTitle("Smart Gk");
@@ -321,7 +319,8 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 signOut();
-
+                                Intent newIntent = new Intent(getApplicationContext(),LoginActivity.class);
+                                startActivity(newIntent);
 //
 
 

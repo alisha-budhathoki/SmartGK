@@ -35,6 +35,9 @@
     <dimen name="cardSizeAdapter">170dp</dimen>
 
 
+    <dimen name="profIconWidth">30dp</dimen>
+    <dimen name="profIconHeight">20dp</dimen>
+
 
 
 

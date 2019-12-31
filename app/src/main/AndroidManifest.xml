@@ -15,13 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Actvities.InquiryActivity"></activity>
+        <activity android:name=".Actvities.InquiryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
         <activity android:name=".Actvities.Pdf2Activity" />
         <activity android:name=".Actvities.PdfActivity" />
         <activity android:name=".Fragment.HomeMainFragment" />
-        <activity android:name=".Actvities.FirstHomeActivity" />
-        <activity android:name=".Actvities.GeneralInfo" />
-        <activity android:name=".Actvities.CourseActivity" />
+        <activity android:name=".Actvities.CourseActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".Fragment.InvoiceFragment" />
         <activity android:name=".Actvities.HomeActivity" />
         <activity
@@ -29,9 +30,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Actvities.HomePage"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".Actvities.BookDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Actvities.LoginActivity"

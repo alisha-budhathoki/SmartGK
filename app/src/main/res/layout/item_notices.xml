@@ -11,9 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="5.00dp"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,33 +18,32 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_large">
 
 
 
             <TextView
                 android:id="@+id/noticeTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Notice title goes here"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:layout_marginLeft="@dimen/spacing_large"
                 android:textSize="@dimen/heading1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/noticeDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+               style="@style/dateTextView"
                 android:layout_marginTop="@dimen/spacing_medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/noticeTitle"
                 android:text="Date: 0000-00-00"
-                android:textSize="@dimen/heading3"
-                android:layout_marginLeft="@dimen/spacing_large"
                 />
 
             <TextView
@@ -58,9 +54,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/spacing_large"
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:layout_marginRight="@dimen/spacing_large"
-                android:layout_marginBottom="@dimen/spacing_large"
                 app:layout_constraintTop_toBottomOf="@+id/noticeDate"
                 app:layout_constraintStart_toEndOf="parent"/>
 

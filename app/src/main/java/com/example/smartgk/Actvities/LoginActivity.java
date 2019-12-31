@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText emailL, passwordL;
     Button login;
-    TextView frgt, crtAcnt, here;
+    TextView frgt, crtAcnt, here, goHome;
     CallbackManager mFacebookCallbackManager;
     private LoginButton mFacebookSignInButton;
     ImageView myFbSigninBtn, loginGoogleImg;
@@ -130,6 +130,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ForgetActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        goHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -267,5 +275,6 @@ public class LoginActivity extends AppCompatActivity {
         here = findViewById(R.id.here);
         myFbSigninBtn = findViewById(R.id.fbIcon);
         myGoogleSigninBtn = findViewById(R.id.googleIcon);
+        goHome = findViewById(R.id.goHomel);
     }
 }

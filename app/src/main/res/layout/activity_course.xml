@@ -65,14 +65,16 @@
 
         <TextView
             android:id="@+id/gnrlInfoDesc"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:text="Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. "
             android:layout_marginLeft="@dimen/spacing_large"
             android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gnrlInfoTxt"
+            app:layout_constraintEnd_toEndOf="parent"
             />
 
         <TextView
@@ -243,9 +245,9 @@
             android:background="@color/white"
             android:paddingTop="1dp"
             android:stretchColumns="0"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
             android:id="@+id/tlTable01"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -394,6 +396,7 @@
             app:layout_constraintTop_toBottomOf="@+id/selectTxt"
             android:layout_marginTop="@dimen/spacing_medium"
             android:layout_marginLeft="@dimen/spacing_large"
+            android:buttonTint="@color/colorPrimary"
             />
         <TextView
             android:id="@+id/videoCheck"
@@ -414,6 +417,8 @@
             app:layout_constraintTop_toBottomOf="@+id/checkbox1"
             android:layout_marginTop="@dimen/spacing_medium"
             android:layout_marginLeft="@dimen/spacing_large"
+            android:buttonTint="@color/colorPrimary"
+
             />
 
         <TextView
@@ -435,6 +440,7 @@
             app:layout_constraintTop_toBottomOf="@+id/checkbox2"
             android:layout_marginTop="@dimen/spacing_medium"
             android:layout_marginLeft="@dimen/spacing_large"
+            android:buttonTint="@color/colorPrimary"
             />
 
         <TextView
@@ -456,6 +462,7 @@
             app:layout_constraintTop_toBottomOf="@+id/checkbox3"
             android:layout_marginTop="@dimen/spacing_medium"
             android:layout_marginLeft="@dimen/spacing_large"
+            android:buttonTint="@color/colorPrimary"
             />
 
         <TextView
@@ -479,6 +486,7 @@
             android:layout_marginLeft="@dimen/spacing_large"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="@dimen/spacing_large"
+            android:buttonTint="@color/colorPrimary"
             />
 
         <TextView

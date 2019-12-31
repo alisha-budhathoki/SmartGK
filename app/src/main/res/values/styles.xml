@@ -24,4 +24,42 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="SingnUpINEditText" parent="Widget.AppCompat.EditText">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/grey</item>
+    </style>
+    <style name="defaultButton" parent="Widget.AppCompat.EditText">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/grey</item>
+        <item name="android:layout_marginTop">@dimen/spacing_large</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_large</item>
+        <item name="android:layout_marginRight">@dimen/spacing_large</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="dateTextView" parent="Widget.AppCompat.TextView">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="cardViewStandard" parent="cardview_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_large</item>
+        <item name="android:layout_marginTop">@dimen/spacing_large</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_large</item>
+        <item name="android:layout_marginRight">@dimen/spacing_large</item>
+        <item name="cardElevation">5.00dp</item>
+    </style>
+
+
+
     </resources>

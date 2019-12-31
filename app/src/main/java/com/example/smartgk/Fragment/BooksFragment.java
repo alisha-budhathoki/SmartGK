@@ -35,7 +35,7 @@ public class BooksFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerBook);
         mList3 = seeBooks();
-        buyBooksAdapter = new BuyBooksAdapter2(getContext(), mList3);
+        buyBooksAdapter = new BuyBooksAdapter2(getContext(), mList3, BooksFragment.this);
         recyclerView.setAdapter(buyBooksAdapter);
 //        recyclerView.setNestedScrollingEnabled(false);
 //        recyclerView,setFo

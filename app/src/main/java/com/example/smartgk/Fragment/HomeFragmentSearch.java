@@ -67,7 +67,7 @@ public class HomeFragmentSearch extends Fragment {
         //For Books
         recyclerView3 = view.findViewById(R.id.recycler3);
         mList3 = seeBooks();
-        buyBooksAdapter = new BuyBooksAdapter(getContext(), mList3);
+        buyBooksAdapter = new BuyBooksAdapter(getContext(), mList3, HomeFragmentSearch.this);
         recyclerView3.setAdapter(buyBooksAdapter);
         recyclerView3.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 

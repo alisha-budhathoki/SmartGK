@@ -6,13 +6,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardReviews"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardElevation="5.00dp"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:layout_marginBottom="@dimen/spacing_large"
+        style="@style/cardViewStandard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

@@ -35,7 +35,7 @@ public class NewsFragment extends Fragment {
 
         recyclerViewNews = view.findViewById(R.id.recyclerNews);
         mListNews = seeNews();
-        newsAdapter = new NewsAdapter(getContext(), mListNews);
+        newsAdapter = new NewsAdapter(getContext(), mListNews, NewsFragment.this);
         recyclerViewNews.setAdapter(newsAdapter);
         recyclerViewNews.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 

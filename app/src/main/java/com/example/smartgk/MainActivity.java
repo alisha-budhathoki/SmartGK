@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbarM);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+//        toolbar.setSup
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestId()
                 .requestProfile()
@@ -98,13 +101,19 @@ public class MainActivity extends AppCompatActivity {
         userImage = findViewById(R.id.user_image);
         txt_userName = findViewById(R.id.user_name);
 
-        sharedPreferenceClass = new SharedPreferenceClass(getApplicationContext());
-        Glide
-                .with(getApplicationContext())
-                .load(sharedPreferenceClass.getPic())
-                .centerCrop()
-                .into(userImage);
-        txt_userName.setText(sharedPreferenceClass.getName());
+        if (sharedPreferenceClass.isLoggedIn()) {
+            sharedPreferenceClass = new SharedPreferenceClass(getApplicationContext());
+            Glide
+                    .with(getApplicationContext())
+                    .load(sharedPreferenceClass.getPic())
+                    .centerCrop()
+                    .into(userImage);
+            txt_userName.setText(sharedPreferenceClass.getName());
+        }
+        else {
+           userImage.setImageResource(R.drawable.logo1);
+           txt_userName.setText("Smart Gk");
+        }
 
         txt_userName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,19 +137,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         listSliding = new ArrayList<>();
-        listSliding.add(new ItemSlideMenu(R.drawable.home, "Home"));
-        listSliding.add(new ItemSlideMenu(R.drawable.loction, "Courses"));
-        listSliding.add(new ItemSlideMenu(R.drawable.envelope, "Book"));
-        listSliding.add(new ItemSlideMenu(R.drawable.loction, "News"));
-        listSliding.add(new ItemSlideMenu(R.drawable.like, "Sucess story"));
-        listSliding.add(new ItemSlideMenu(R.drawable.ic_check, "About"));
-        listSliding.add(new ItemSlideMenu(R.drawable.loction, "Contact"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_home, "  Home"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_courses, "  Courses"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_book_nav, "  Book"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_news, "  News"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_sucess, "  Sucess story"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_abt, "  About"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_contact, "  Contact"));
 
         listSliding.add(new ItemSlideMenu(R.color.colorPrimary," "));
         listSliding.add(new ItemSlideMenu(R.color.colorPrimary," "));
 
-        listSliding.add(new ItemSlideMenu(R.drawable.loction, "Settings"));
-        listSliding.add(new ItemSlideMenu(R.drawable.ic_logout, "LogOut"));
+        listSliding.add(new ItemSlideMenu(R.drawable.settings, "  Settings"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_logout, "  LogOut"));
 
         SlidingMenuAdapter adapter = new SlidingMenuAdapter(this, listSliding);
         listViewSliding.setAdapter(adapter);
@@ -242,12 +251,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void replaceFragment(int pos) {
         // Fragment fragment = null;
+//        toolbar.setTitle(""); //for empty
         FragmentManager fragmentManager = getSupportFragmentManager();
         switch (pos) {
 
 
             case 0:
-                toolbar_title.setText("Home");
+                toolbar_title.setText("Home"); // changes
 
                 fragmentManager.beginTransaction().replace(R.id.main_content, new HomeFragmentSearch()).addToBackStack(null).commit();
                 break;
@@ -255,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 toolbar_title.setText("Courses");
 
-                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseFragmentDrawer()).addToBackStack(null).commit();
+                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseDetailFragmentWithTabs()).addToBackStack(null).commit();
                 break;
 
 
@@ -389,5 +399,8 @@ public class MainActivity extends AppCompatActivity {
         }
 //       GoogleSignInClient
 
+    }
+    public void toolbarName(String title){
+        toolbar_title.setText(title);
     }
 }

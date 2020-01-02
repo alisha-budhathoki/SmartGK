@@ -1,23 +1,21 @@
 package com.example.smartgk.Actvities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.smartgk.R;
 
-import org.w3c.dom.Text;
-
-public class ForgetActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends AppCompatActivity {
     TextView goHome;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget);
-        goHome = findViewById(R.id.goHomeF);
+        setContentView(R.layout.activity_change_password);
+        goHome = findViewById(R.id.goHomeCP);
 
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,5 +23,6 @@ public class ForgetActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }

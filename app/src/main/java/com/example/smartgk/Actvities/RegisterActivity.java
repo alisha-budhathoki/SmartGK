@@ -14,7 +14,7 @@ import com.example.smartgk.R;
 public class RegisterActivity extends AppCompatActivity {
     EditText regEmail, passwd, cPasswd;
     Button reigstrBtn;
-    TextView goToLogin;
+    TextView goToLogin, goHomeFromRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,12 @@ public class RegisterActivity extends AppCompatActivity {
                startActivity(intent);
             }
         });
+        goHomeFromRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initWidgets() {
@@ -43,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
         cPasswd = findViewById(R.id.confpwdEdtTxt);
         reigstrBtn = findViewById(R.id.registerBtn);
         goToLogin = findViewById(R.id.gotoLogn);
+        goHomeFromRegister = findViewById(R.id.goHomer);
 
     }
 

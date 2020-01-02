@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.smartgk.Actvities.ViewPage;
+import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -21,7 +22,7 @@ public class CourseDetailFragmentWithTabs extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_course_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_course_detail_tabs, container, false);
         tabLayout = view.findViewById(R.id.tabs);
         viewPager = view.findViewById(R.id.viewpager);
         ViewPage ViewPage = new ViewPage(getFragmentManager());
@@ -38,6 +39,12 @@ public class CourseDetailFragmentWithTabs extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).toolbarName("Courses");
     }
 }
 

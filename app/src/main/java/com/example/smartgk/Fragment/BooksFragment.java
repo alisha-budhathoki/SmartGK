@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartgk.Adapter.BuyBooksAdapter;
 import com.example.smartgk.Adapter.BuyBooksAdapter2;
+import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.example.smartgk.model.BuyBooks;
 
@@ -62,4 +63,11 @@ public class BooksFragment extends Fragment {
         }
         return booklist;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).toolbarName("Books");
+    }
+
 }

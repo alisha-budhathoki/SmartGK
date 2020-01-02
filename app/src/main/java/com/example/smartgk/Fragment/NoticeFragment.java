@@ -22,7 +22,7 @@ public class NoticeFragment extends Fragment {
 
     private String[] noticesDate = new String[]{"2009-12-23","2009-12-23" ,"2009-12-23","2009-12-23","2009-12-23"};
     private String[] noticesTitle = new String[]{"New Exams Starting soon","Results published of the first exams" ,"Find your career here","Find your career here","Find your career here"};
-    private String[] noticesDesc = new String[]{"Alchemistdhfedjjjjjjjgbdjhbfvhjdsbvj,nsbfs","Brave" ,"Lean in","Brave","Alchemist"};
+    private String[] noticesDesc = new String[]{"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam","Brave" ,"Lean in","Brave","Alchemist"};
 
 
     @Override

@@ -40,6 +40,8 @@
             <EditText
                 android:id="@+id/emailEdittextr"
                 style="@style/SingnUpINEditText"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginRight="@dimen/spacing_large"
                 android:drawableRight="@drawable/ic_mail_black_24dp"
                 android:hint="Enter Email Address"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginRight="@dimen/spacing_large"
                 android:backgroundTint="@color/grey"
                 app:passwordToggleEnabled="true"
                 android:inputType="textMultiLine"
@@ -86,7 +90,7 @@
         android:drawablePadding="10dp"
         android:layout_marginLeft="@dimen/spacing_large"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/spacing_xlarge"
+        android:layout_marginTop="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feedbackbtn" />
 
@@ -109,7 +113,7 @@
             app:cardUseCompatPadding="true"
             app:contentPadding="12dp"
             app:cardElevation="5.00dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/spacing_large"
             >
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraint1"
@@ -138,7 +142,7 @@
                     android:layout_marginTop="@dimen/spacing_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/profiIcn"
-                    android:src="@drawable/telephone"></ImageView>
+                    android:src="@drawable/ic_nav_contact"></ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -155,7 +159,7 @@
                     android:layout_marginTop="@dimen/spacing_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/phnIcn"
-                    android:src="@drawable/loction"></ImageView>
+                    android:src="@drawable/ic_nav_home"></ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

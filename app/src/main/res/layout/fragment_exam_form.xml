@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actvities.ExamFormActivity">
+    tools:context=".Actvities.ExamFormFragment">
 
     <TextView
         android:id="@+id/examNameText"
@@ -67,6 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Answer one"
+                android:buttonTint="@color/colorPrimary"
                 android:layout_marginLeft="@dimen/spacing_large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/noticeTitle" />
@@ -78,6 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Answer Two"
+                android:buttonTint="@color/colorPrimary"
                 android:layout_marginLeft="@dimen/spacing_large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radio1" />
@@ -90,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Answer Three"
+                android:buttonTint="@color/colorPrimary"
                 android:layout_marginLeft="@dimen/spacing_large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radio2" />
@@ -103,6 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:text="Answer Four"
+                android:buttonTint="@color/colorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radio3"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -117,17 +121,11 @@
 
     <Button
         android:id="@+id/submitBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Submit Answer"
-        android:textColor="@color/white"
+        style="@style/defaultButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardExamForm"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:background="@color/grey"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

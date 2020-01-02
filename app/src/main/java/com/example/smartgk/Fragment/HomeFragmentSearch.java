@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartgk.Adapter.BestCoursesAdapter;
 import com.example.smartgk.Adapter.BuyBooksAdapter;
 import com.example.smartgk.Adapter.NewCourseAdapter;
+import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.example.smartgk.model.BestCourses;
 import com.example.smartgk.model.BuyBooks;
@@ -51,7 +52,7 @@ public class HomeFragmentSearch extends Fragment {
 
         recyclerView1 = view.findViewById(R.id.recycler1);
         mList = seeBestCourses();
-        bestCoursesAdapter = new BestCoursesAdapter(getContext(), mList);
+        bestCoursesAdapter = new BestCoursesAdapter(getContext(), mList, HomeFragmentSearch.this);
         recyclerView1.setAdapter(bestCoursesAdapter);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
@@ -59,7 +60,7 @@ public class HomeFragmentSearch extends Fragment {
 
         recyclerView2 = view.findViewById(R.id.recycler2);
         mList2 = seeNewCourses();
-        newCourseAdapter = new NewCourseAdapter(getContext(), mList2);
+        newCourseAdapter = new NewCourseAdapter(getContext(), mList2, HomeFragmentSearch.this);
         recyclerView2.setAdapter(newCourseAdapter);
         recyclerView2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
@@ -114,6 +115,12 @@ public class HomeFragmentSearch extends Fragment {
             list.add(bestCourses);
         }
         return list;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).toolbarName("Home");
     }
 
 }

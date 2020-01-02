@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartgk.Adapter.NewCourseAdapter;
 import com.example.smartgk.Adapter.SucessStoriesAdapter;
+import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.example.smartgk.model.BestCourses;
 import com.example.smartgk.model.NewCourses;
@@ -54,5 +55,11 @@ public class SucessStoryFragment extends Fragment {
             listSucess.add(sucessStories);
         }
         return listSucess;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).toolbarName("Sucess Stories");
     }
 }

@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.smartgk.Actvities.InquiryActivity;
 import com.example.smartgk.Actvities.ViewPage;
+import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -48,5 +49,11 @@ public class BookDetailsFragment extends Fragment {
         tabLayoutBookDetails.setTabTextColors(getResources().getColor(R.color.mintGreen), getResources().getColor(R.color.white));
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).toolbarName("Book Detail");
     }
 }

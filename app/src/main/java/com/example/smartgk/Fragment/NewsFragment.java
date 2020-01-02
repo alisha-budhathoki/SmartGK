@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartgk.Adapter.NewsAdapter;
 import com.example.smartgk.Adapter.SucessStoriesAdapter;
+import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.example.smartgk.model.News;
 import com.example.smartgk.model.SucessStories;
@@ -55,5 +56,11 @@ public class NewsFragment extends Fragment {
             listNews.add(news);
         }
         return listNews;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).toolbarName("News");
     }
 }

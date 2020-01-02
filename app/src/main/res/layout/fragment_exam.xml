@@ -6,85 +6,14 @@
     android:layout_height="match_parent"
     >
 
-    <androidx.cardview.widget.CardView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerExam"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/examDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date: 0000-00-00"
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:layout_marginTop="@dimen/spacing_large"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                ></TextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/examSt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Start Time: 5:00 A.M."
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:layout_marginTop="@dimen/spacing_medium"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/examDate"
-                ></TextView>
-
-
-
-            <TextView
-                android:id="@+id/examEt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="End Time: 5:00 A.M."
-                android:layout_marginRight="@dimen/spacing_large"
-                android:layout_marginTop="@dimen/spacing_medium"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/examDate"
-                ></TextView>
-
-            <TextView
-                android:id="@+id/examName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nepal Rastra Bank Ltd."
-                android:textStyle="bold"
-                android:textSize="@dimen/heading1"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:layout_marginTop="@dimen/spacing_large"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/examEt"
-                ></TextView>
-
-
-            <Button
-                android:id="@+id/viewExam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/examName"
-                android:text="View Exam"
-                android:background="@color/colorPrimary"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:layout_marginBottom="@dimen/spacing_large"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

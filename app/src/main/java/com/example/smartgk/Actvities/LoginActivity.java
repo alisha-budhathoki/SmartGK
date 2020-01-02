@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText emailL, passwordL;
     Button login;
-    TextView frgt, crtAcnt, here, goHome;
+    TextView frgt, here, goHome, gotoRegister;
     CallbackManager mFacebookCallbackManager;
     private LoginButton mFacebookSignInButton;
     ImageView myFbSigninBtn, loginGoogleImg;
@@ -118,11 +118,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        crtAcnt.setOnClickListener(new View.OnClickListener() {
+        gotoRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(intent);
+                Intent intentRegister = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intentRegister);
             }
         });
 
@@ -137,8 +137,7 @@ public class LoginActivity extends AppCompatActivity {
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+              finish();
             }
         });
 
@@ -271,7 +270,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordL = findViewById(R.id.passwordEditextr);
         login = findViewById(R.id.login);
         frgt = findViewById(R.id.frgtTxt);
-        crtAcnt = findViewById(R.id.crtAcnt);
+        gotoRegister = findViewById(R.id.registerAccount);
         here = findViewById(R.id.here);
         myFbSigninBtn = findViewById(R.id.fbIcon);
         myGoogleSigninBtn = findViewById(R.id.googleIcon);

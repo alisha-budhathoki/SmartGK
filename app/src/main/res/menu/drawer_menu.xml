@@ -24,7 +24,7 @@
 
         <item
         android:id="@+id/nav_sucessStory"
-        android:icon="@drawable/like"
+        android:icon="@drawable/ic_nav_sucess"
         android:title="Sucess Story" />
 
         <item
@@ -43,7 +43,7 @@
             android:title="Logout" />
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_logout"
+            android:icon="@drawable/ic_nav_logout"
             android:title="Message" />
     </group>
 

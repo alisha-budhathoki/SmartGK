@@ -15,14 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Actvities.InquiryActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            />
-        <activity android:name=".Actvities.Pdf2Activity" />
-        <activity android:name=".Actvities.PdfActivity" />
+        <activity android:name=".Actvities.EditProfileActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".Actvities.InquiryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Fragment.HomeMainFragment" />
-        <activity android:name=".Actvities.CourseActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".Fragment.CourseDetailFragment"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Fragment.InvoiceFragment" />
         <activity android:name=".Actvities.HomeActivity" />
         <activity
@@ -33,6 +34,12 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Actvities.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Actvities.PdfActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Actvities.ChangePasswordActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Actvities.RegisterActivity"

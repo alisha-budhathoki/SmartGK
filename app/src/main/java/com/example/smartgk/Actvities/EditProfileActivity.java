@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.smartgk.R;
 
-public class CourseActivity extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course);
+        setContentView(R.layout.activity_edit_profile);
     }
 }

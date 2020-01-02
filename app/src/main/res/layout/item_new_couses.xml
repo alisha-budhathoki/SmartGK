@@ -8,7 +8,7 @@
     >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/A2"
+            android:id="@+id/cardNewCourse"
             app:cardElevation="5.00dp"
             android:layout_width="220dp"
             android:layout_height="wrap_content"

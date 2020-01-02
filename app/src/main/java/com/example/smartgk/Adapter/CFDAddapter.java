@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Actvities.CourseActivity;
+import com.example.smartgk.Fragment.CourseDetailFragment;
 import com.example.smartgk.R;
 import com.example.smartgk.model.NewCourses;
 
@@ -45,7 +45,7 @@ public class CFDAddapter extends RecyclerView.Adapter<CFDAddapter.MyViewHolder> 
         holder.coursesCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intoBookSetails = new Intent(v.getContext(), CourseActivity.class);
+                Intent intoBookSetails = new Intent(v.getContext(), CourseDetailFragment.class);
                 context.startActivity(intoBookSetails);
             }
         });

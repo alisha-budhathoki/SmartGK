@@ -25,22 +25,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regTxt"
-        android:layout_marginTop="@dimen/spacing_large"
-
         >
         <androidx.cardview.widget.CardView
             android:elevation="200dp"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             app:cardElevation="5dp"
-            app:cardUseCompatPadding="true"
             app:contentPadding="12dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_large"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,7 +57,7 @@
                 <EditText
                     android:id="@+id/passwordEditextr"
                     style="@style/SingnUpINEditText"
-                    android:layout_marginBottom="@dimen/normalMargin"
+                    android:layout_marginBottom="@dimen/spacing_large"
                     android:hint="Passowrd"
                     android:inputType="textPassword"
                     android:drawableRight="@drawable/ic_person_black_24dp"
@@ -70,7 +68,7 @@
                 <EditText
                     android:id="@+id/confpwdEdtTxt"
                     style="@style/SingnUpINEditText"
-                    android:layout_marginBottom="@dimen/normalMargin"
+                    android:layout_marginBottom="@dimen/spacing_large"
                     android:hint="Retype Passowrd"
                     android:inputType="textPassword"
                     android:drawableRight="@drawable/ic_lock_black_24dp"
@@ -167,7 +165,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Go Home"
         android:textSize="@dimen/heading3"
-        android:layout_marginBottom="@dimen/smallMargin"
+        android:layout_marginBottom="@dimen/spacing_large"
         android:layout_marginRight="@dimen/spacing_large"
         />
 

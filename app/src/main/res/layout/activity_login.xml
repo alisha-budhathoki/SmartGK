@@ -25,8 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginTxt"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,17 +33,19 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:layout_marginTop="20dp"
             app:cardElevation="5.00dp"
-            app:cardUseCompatPadding="true"
             app:contentPadding="12dp"
-
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_large"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="16dp">
+                android:elevation="16dp"
+                >
 
                 <EditText
                     android:id="@+id/emailEdittextr"
@@ -222,7 +222,7 @@
         />
 
     <TextView
-        android:id="@+id/crtAcnt"
+        android:id="@+id/registerAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

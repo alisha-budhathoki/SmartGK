@@ -37,9 +37,9 @@
                 android:id="@+id/title_name_drawer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_xmedium"
+                android:layout_marginLeft="@dimen/spacing_medium"
                 android:layout_marginTop="@dimen/spacing_medium"
-                android:layout_marginRight="@dimen/spacing_medium"
+                android:layout_marginRight="@dimen/spacing_xmedium"
                 android:text="Course Name Goes Here"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,14 +49,25 @@
                 />
 
             <TextView
+                android:id="@+id/rsCourseDrawer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_xmedium"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:text="Rs. "
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_name_drawer" />
+
+            <TextView
                 android:id="@+id/course_price_drawer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_medium"
                 android:layout_marginBottom="@dimen/spacing_medium"
-                android:text="Rs. 1500/-"
+                android:text="1500/-"
                 android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/rsCourseDrawer"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_name_drawer" />
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Actvities.ForgetActivity">
 
+
     <LinearLayout
         android:id="@+id/linearMainForget"
         android:layout_width="match_parent"
@@ -35,7 +36,7 @@
                 <EditText
                     android:id="@+id/emailEdittextrForget"
                     style="@style/SingnUpINEditText"
-                    android:hint="Enter Email Address"
+                    android:hint="Enter your Email Address"
                     android:drawableRight="@drawable/ic_person_black_24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

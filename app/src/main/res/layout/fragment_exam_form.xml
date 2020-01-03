@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actvities.ExamFormFragment">
+    tools:context=".Fragment.ExamFormFragment">
 
     <TextView
         android:id="@+id/examNameText"
@@ -61,7 +61,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/noticeTitle">
             <RadioButton
                 android:id="@+id/radio1"
                 android:layout_width="wrap_content"
@@ -113,7 +118,7 @@
                 android:layout_marginBottom="@dimen/spacing_large"/>
 
 
-
+</RadioGroup>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -126,6 +131,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardExamForm"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_16sdp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

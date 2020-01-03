@@ -22,17 +22,17 @@
             android:text="Profile"
             android:textColor="@color/mintGreen"
             android:textStyle="bold"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
 
         <ImageView
             android:id="@+id/profImg"
-            android:layout_width="135dp"
-            android:layout_height="155dp"
-            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_width="@dimen/_105sdp"
+            android:layout_height="@dimen/_112sdp"
+            android:layout_marginTop="@dimen/_16sdp"
             android:src="@drawable/img_black"
             android:scaleType="fitXY"
             android:contentDescription="Profile Image"
@@ -48,71 +48,75 @@
             android:textSize="@dimen/heading2"
             android:text="John Doe"
             android:textStyle="bold"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_12sdp"
             app:layout_constraintStart_toEndOf="@+id/profImg"
             app:layout_constraintTop_toBottomOf="@+id/profTxt"
             />
         <TextView
             android:id="@+id/desc"
-            android:layout_width="180dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_16sdp"
             android:layout_marginTop="@dimen/spacing_xmedium"
             android:text="Loreum ipsum dolor sit amet, consecutir adipiscing elit. Mascenas semmassa, vestibulum sit amet sapien ut, elefiend sodales enim, Vestibulum luctus lorem nec nibh ultrices tris-"
             app:layout_constraintStart_toEndOf="@+id/profImg"
             app:layout_constraintTop_toBottomOf="@+id/proNm"
+            app:layout_constraintEnd_toEndOf="parent"
             />
 
         <Button
             android:id="@+id/edtProf"
-            android:layout_width="68dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_20sdp"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/profImg"
             app:layout_constraintTop_toBottomOf="@+id/desc"
             android:text="Edit Profile"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginTop="@dimen/spacing_xmedium"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:textColor="@color/white"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
+            android:textStyle="bold"
             android:background="@color/colorPrimary"
             />
         <Button
             android:id="@+id/chngPw"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/_85sdp"
+            android:layout_height="@dimen/_20sdp"
             android:textSize="10sp"
             android:background="@color/colorPrimary"
-            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/_16sdp"
             app:layout_constraintTop_toBottomOf="@+id/desc"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
             android:text="Change Password"
-            android:layout_marginTop="@dimen/spacing_xmedium"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_8sdp"
             />
         <LinearLayout
             android:id="@+id/linearMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginRight="@dimen/spacing_large"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profImg"
             >
 
             <androidx.cardview.widget.CardView
-                android:elevation="200dp"
+                android:elevation="@dimen/_200sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardElevation="1dp"
                 app:cardUseCompatPadding="true"
-                app:contentPadding="12dp"
-                android:layout_marginTop="20dp"
+                app:contentPadding="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraint1"
@@ -158,7 +162,7 @@
                         android:layout_marginTop="@dimen/spacing_small"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/phnIcn"
-                        android:src="@drawable/ic_nav_contact"></ImageView>
+                        android:src="@drawable/ic_location_on_black_24dp"></ImageView>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -168,22 +172,7 @@
                         app:layout_constraintStart_toEndOf="@+id/loctn"
                         android:layout_marginLeft="@dimen/spacing_small"/>
 
-                    <ImageView
-                        android:id="@+id/hom"
-                        android:layout_width="@dimen/profIconWidth"
-                        android:layout_height="@dimen/profIconHeight"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/loctn"
-                        android:src="@drawable/home"></ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:text="New Baneshwor, Kathmandu, Nepal"
-                        app:layout_constraintTop_toBottomOf="@+id/loctn"
-                        app:layout_constraintStart_toEndOf="@+id/hom"
-                        android:layout_marginLeft="@dimen/spacing_small"/>
+
 
                     <ImageView
                         android:id="@+id/web"
@@ -191,14 +180,14 @@
                         android:layout_height="@dimen/profIconHeight"
                         android:layout_marginTop="@dimen/spacing_small"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/hom"
+                        app:layout_constraintTop_toBottomOf="@+id/loctn"
                         android:src="@drawable/www"></ImageView>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="www.johndoe.com.np"
                         android:layout_marginTop="@dimen/spacing_small"
-                        app:layout_constraintTop_toBottomOf="@+id/hom"
+                        app:layout_constraintTop_toBottomOf="@+id/loctn"
                         app:layout_constraintStart_toEndOf="@+id/web"
                         android:layout_marginLeft="@dimen/spacing_small"/>
 
@@ -226,8 +215,8 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabsP"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_16sdp"
             android:foregroundGravity="center"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -235,9 +224,9 @@
             app:tabGravity="fill"
             app:tabTextAppearance="@style/MineCustomTabText"
             app:tabIndicatorColor="#fff"
-            app:tabMode="fixed"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginRight="@dimen/spacing_large"
+            app:tabMode="scrollable"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_16sdp"
             android:clickable="true"
             app:tabBackground="@drawable/tab_selector"
             app:tabTextColor="@color/colorPrimary" />
@@ -245,7 +234,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpagerP"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="@dimen/_500sdp"
             app:layout_constraintTop_toBottomOf="@+id/tabsP"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             />

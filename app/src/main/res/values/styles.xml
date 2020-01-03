@@ -28,7 +28,7 @@
 
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:backgroundTint">@color/grey</item>
+        <item name="android:backgroundTint">@color/primaryGrey</item>
     </style>
     <style name="defaultButton" parent="Widget.AppCompat.EditText">
 
@@ -51,6 +51,4 @@
 
 
 
-
-
-    </resources>
+</resources>

@@ -40,19 +40,29 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:text="Course Name Goes Here"
-                    android:layout_marginLeft="@dimen/spacing_medium"
+                    android:layout_marginLeft="@dimen/spacing_xmedium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/newCourse_img"
+
+                    />
+                <TextView
+                    android:id="@+id/rsNewCourse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rs. "
+                    android:layout_marginLeft="@dimen/spacing_xmedium"
+                    android:textColor="@color/mintGreen"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/newCourse_title"
 
                     />
                 <TextView
                     android:id="@+id/newCourse_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rs. 1500/-"
-                    android:layout_marginLeft="@dimen/spacing_medium"
+                    android:text="1500/-"
                     android:textColor="@color/mintGreen"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/rsNewCourse"
                     app:layout_constraintTop_toBottomOf="@+id/newCourse_title"
 
                     />

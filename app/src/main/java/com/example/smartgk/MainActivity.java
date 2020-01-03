@@ -9,8 +9,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -30,6 +33,7 @@ import com.example.smartgk.Actvities.LoginActivity;
 import com.example.smartgk.Actvities.SharedPreferenceClass;
 import com.example.smartgk.Fragment.AboutFragment;
 import com.example.smartgk.Fragment.BooksFragment;
+import com.example.smartgk.Fragment.CourseFragment;
 import com.example.smartgk.Fragment.CourseFragmentDrawer;
 import com.example.smartgk.Fragment.HomeFragmentSearch;
 import com.example.smartgk.Fragment.ContactFragment;
@@ -87,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
-
         sharedPreferenceClass = new SharedPreferenceClass(getApplicationContext());
 
         listViewSliding = (ListView) findViewById(R.id.lv_sliding_menu);
@@ -109,10 +112,9 @@ public class MainActivity extends AppCompatActivity {
                     .centerCrop()
                     .into(userImage);
             txt_userName.setText(sharedPreferenceClass.getName());
-        }
-        else {
-           userImage.setImageResource(R.drawable.logo1);
-           txt_userName.setText("Smart Gk");
+        } else {
+            userImage.setImageResource(R.drawable.logo1);
+            txt_userName.setText("Smart Gk");
         }
 
         txt_userName.setOnClickListener(new View.OnClickListener() {
@@ -124,8 +126,7 @@ public class MainActivity extends AppCompatActivity {
 //                    FragmentTransaction fragmentManager = getSupportFragmentManager().beginTransaction();
 //                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
 //                    startActivity(intent);
-                }
-                else {
+                } else {
                     Intent loginintent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(loginintent);
                 }
@@ -133,22 +134,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-
         listSliding = new ArrayList<>();
         listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_home, "  Home"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_courses, "  Courses"));
-        listSliding.add(new ItemSlideMenu(R.drawable.ic_book_nav, "  Book"));
-        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_news, "  News"));
-        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_sucess, "  Sucess story"));
-        listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_abt, "  About"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_book, "  Book"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_news, "  News"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_success, "  Sucess story"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_tick_about, "  About"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_contact, "  Contact"));
 
-        listSliding.add(new ItemSlideMenu(R.color.colorPrimary," "));
-        listSliding.add(new ItemSlideMenu(R.color.colorPrimary," "));
+        listSliding.add(new ItemSlideMenu(R.color.colorPrimary, " "));
+        listSliding.add(new ItemSlideMenu(R.color.colorPrimary, " "));
 
-        listSliding.add(new ItemSlideMenu(R.drawable.settings, "  Settings"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_settings, "  Settings"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_nav_logout, "  LogOut"));
 
         SlidingMenuAdapter adapter = new SlidingMenuAdapter(this, listSliding);
@@ -265,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 toolbar_title.setText("Courses");
 
-                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseDetailFragmentWithTabs()).addToBackStack(null).commit();
+                fragmentManager.beginTransaction().replace(R.id.main_content, new CourseFragmentDrawer()).addToBackStack(null).commit();
                 break;
 
 
@@ -293,7 +291,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
 
-
             case 5:
 
                 toolbar_title.setText("About");
@@ -312,36 +309,44 @@ public class MainActivity extends AppCompatActivity {
 
 
             case 10:
-                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_HOLO_LIGHT).create();
+                if (sharedPreferenceClass.isLoggedIn()) {
 
-                alertDialog.setTitle("Smart Gk");
-                alertDialog.setMessage(Html.fromHtml("Would you like to logout?"));
+                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_HOLO_LIGHT).create();
 
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
+                    alertDialog.setTitle(Html.fromHtml("<font color='#9ed263'>Smart Gk</font>"));
+                    alertDialog.setMessage(Html.fromHtml("Would you like to logout?"));
 
-                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "LogOut",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
+                    //alertDialog Divider
 
-                                signOut();
-                                Intent newIntent = new Intent(getApplicationContext(),LoginActivity.class);
-                                startActivity(newIntent);
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "LogOut",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    signOut();
+                                    Intent newIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                                    startActivity(newIntent);
 //
 
 
-                            }
-                        });
+                                }
+                            });
 
-                alertDialog.show();
-                final Button neutralButton = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
-                final Button positveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                neutralButton.setTextColor(getResources().getColor(R.color.black));
-                positveButton.setTextColor(getResources().getColor(R.color.black));
+                    alertDialog.show();
+                    final Button neutralButton = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+                    final Button positveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                    neutralButton.setTextColor(getResources().getColor(R.color.black));
+                    positveButton.setTextColor(getResources().getColor(R.color.black));
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"You are not logged in yet",Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             default:
@@ -352,6 +357,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     @Override
     public void onBackPressed() {
 
@@ -377,30 +383,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void signOut() {
-        try {
-            mGoogleSignInClient.signOut()
-                    .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            sharedPreferenceClass.isLooggedIn(false);
-                            finish();
-                        }
-                    });
+            try {
+                mGoogleSignInClient.signOut()
+                        .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                sharedPreferenceClass.isLooggedIn(false);
+                                finish();
+                            }
+                        });
 
-            LoginManager.getInstance().logOut();
+                LoginManager.getInstance().logOut();
 
 //            SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
 //                                sharedPreferences.edit().clear().commit();
 //                                register_image.setVisibility(View.VISIBLE);
 //                                logOut.setVisibility(View.GONE);
 //                               finish();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 //       GoogleSignInClient
+        Toast.makeText(getApplicationContext(), "You are loggest out now", Toast.LENGTH_SHORT).show();
 
     }
+
+
+
     public void toolbarName(String title){
         toolbar_title.setText(title);
     }
+
 }

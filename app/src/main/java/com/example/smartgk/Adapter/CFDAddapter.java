@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Fragment.CourseDetailFragment;
+import com.example.smartgk.Fragment.CoursesFragmentPackage.CourseDetailFragment;
 import com.example.smartgk.R;
 import com.example.smartgk.model.NewCourses;
 

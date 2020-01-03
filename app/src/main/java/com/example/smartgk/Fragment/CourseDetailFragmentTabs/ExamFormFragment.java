@@ -1,4 +1,4 @@
-package com.example.smartgk.Fragment;
+package com.example.smartgk.Fragment.CourseDetailFragmentTabs;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

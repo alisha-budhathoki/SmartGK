@@ -1,4 +1,4 @@
-package com.example.smartgk.Fragment;
+package com.example.smartgk.Fragment.CoursesFragmentPackage;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

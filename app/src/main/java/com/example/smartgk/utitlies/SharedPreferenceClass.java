@@ -1,4 +1,4 @@
-package com.example.smartgk.Actvities;
+package com.example.smartgk.utitlies;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -38,11 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forSearch"
         android:text="Explore Best Courses"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/heading1"
-        android:textStyle="bold"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
+        style="@style/textActivity"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -93,17 +89,13 @@
 
     <TextView
         android:id="@+id/newCourseTxt"
+        style="@style/textActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rel3"
         android:text="New Courses"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/heading1"
-        android:textStyle="bold"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
         />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler2"
@@ -124,10 +116,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler2"
         android:text="Buy Books"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:textSize="@dimen/heading1"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        style="@style/textActivity"
         />
 
     <androidx.recyclerview.widget.RecyclerView

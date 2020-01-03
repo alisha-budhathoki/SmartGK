@@ -14,8 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Fragment.ExamFormFragment;
-import com.example.smartgk.Fragment.ExamFragment;
+import com.example.smartgk.Fragment.CourseDetailFragmentTabs.ExamFormFragment;
+import com.example.smartgk.Fragment.CourseDetailFragmentTabs.ExamFragment;
 import com.example.smartgk.R;
 import com.example.smartgk.model.Exams;
 

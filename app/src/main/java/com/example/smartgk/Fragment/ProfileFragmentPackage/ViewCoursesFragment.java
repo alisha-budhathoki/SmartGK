@@ -1,4 +1,4 @@
-package com.example.smartgk.Fragment;
+package com.example.smartgk.Fragment.ProfileFragmentPackage;
 
 import androidx.fragment.app.Fragment;
 

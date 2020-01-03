@@ -22,9 +22,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Fragment.HomeMainFragment" />
         <activity
-            android:name=".Fragment.CourseDetailFragment"
+            android:name=".Fragment.CoursesFragmentPackage.CourseDetailFragment"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Fragment.InvoiceFragment" />
+        <activity android:name=".Fragment.ProfileFragmentPackage.InvoiceFragment" />
         <activity android:name=".Actvities.HomeActivity" />
         <activity
             android:name=".Actvities.ForgetActivity"

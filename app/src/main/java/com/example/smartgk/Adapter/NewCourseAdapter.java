@@ -14,11 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Fragment.CourseDetailFragment;
-import com.example.smartgk.Fragment.HomeFragment;
+import com.example.smartgk.Fragment.CoursesFragmentPackage.CourseDetailFragment;
 import com.example.smartgk.Fragment.HomeFragmentSearch;
 import com.example.smartgk.R;
-import com.example.smartgk.model.BestCourses;
 import com.example.smartgk.model.NewCourses;
 
 import java.util.List;

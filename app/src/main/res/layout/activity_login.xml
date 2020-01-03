@@ -13,11 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Login into your account"
-        android:textStyle="bold"
-        android:textColor="@color/mintGreen"
-        android:textSize="@dimen/heading1"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginLeft="@dimen/spacing_large"
+        style="@style/textActivity"
         />
 
     <LinearLayout
@@ -32,13 +28,13 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="@dimen/_120sdp"
             app:cardElevation="5.00dp"
             app:contentPadding="12dp"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginRight="@dimen/spacing_large"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:layout_marginBottom="@dimen/spacing_large"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,12 +89,7 @@
         android:text="Or Login with"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login"
-        android:layout_marginTop="@dimen/spacing_xlarge"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:textColor="@color/mintGreen"
-        android:textSize="@dimen/heading1"
-        android:textStyle="bold"
+        style="@style/textActivity"
          />
 
     <com.facebook.login.widget.LoginButton
@@ -129,19 +120,19 @@
 
     <ImageView
         android:id="@+id/fbIcon"
-        android:layout_width="@dimen/spacing_smlarge"
-        android:layout_height="@dimen/spacing_smlarge"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
         android:src="@drawable/fb_logo"
         android:layout_marginTop="@dimen/spacing_medium"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/googel_sign_in_button"
         />
     <ImageView
         android:id="@+id/googleIcon"
-        android:layout_width="@dimen/spacing_smlarge"
-        android:layout_height="@dimen/spacing_smlarge"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
         android:src="@drawable/google_logo"
         android:layout_marginTop="@dimen/spacing_medium"
         android:layout_marginLeft="@dimen/spacing_large"
@@ -157,12 +148,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgot your password ?"
-        android:textColor="@color/mintGreen"
-        android:textStyle="bold"
-        android:textSize="@dimen/heading1"
-        android:layout_marginTop="@dimen/spacing_xlarge"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
+        style="@style/textActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fbIcon"
         />
@@ -175,9 +161,9 @@
         app:layout_constraintTop_toBottomOf="@+id/frgtTxt"
         android:textSize="@dimen/heading3"
         android:text="No worries, click "
-        android:layout_marginTop="@dimen/spacing_medium"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
         />
 
     <TextView
@@ -190,7 +176,7 @@
         android:text="here"
         android:textStyle="bold"
         android:textColor="@color/skyBlue"
-        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/_6sdp"
         android:layout_marginRight="@dimen/spacing_large"
         />
 
@@ -202,8 +188,8 @@
         app:layout_constraintTop_toBottomOf="@+id/frgtTxt"
         android:textSize="@dimen/heading3"
         android:text=" to reset your passowrd."
-        android:layout_marginTop="@dimen/spacing_medium"
-        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginRight="@dimen/_16sdp"
         />
 
     <TextView
@@ -211,12 +197,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Don't have an account yet ?"
-        android:textColor="@color/mintGreen"
-        android:textStyle="bold"
-        android:textSize="@dimen/heading1"
-        android:layout_marginTop="@dimen/spacing_xlarge"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
+        style="@style/textActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noWrsTxt1"
         />
@@ -229,8 +210,8 @@
         app:layout_constraintTop_toBottomOf="@+id/dntAcnt"
         android:text="Create an account"
         android:textSize="@dimen/heading3"
-        android:layout_marginTop="@dimen/spacing_medium"
-        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
         android:layout_marginRight="@dimen/spacing_large"
         android:textColor="@color/skyBlue"
         android:textStyle="bold"
@@ -243,8 +224,8 @@
     app:layout_constraintBottom_toBottomOf="parent"
     android:text="Go Home"
     android:textSize="@dimen/heading3"
-    android:layout_marginBottom="@dimen/spacing_large"
-    android:layout_marginRight="@dimen/spacing_large"
+    android:layout_marginBottom="@dimen/_16sdp"
+    android:layout_marginRight="@dimen/_16sdp"
     />
 
 

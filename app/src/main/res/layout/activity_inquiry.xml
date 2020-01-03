@@ -12,11 +12,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Inquiry for book"
-        android:textStyle="bold"
-        android:textColor="@color/mintGreen"
-        android:textSize="@dimen/heading1"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginLeft="@dimen/spacing_large"
+        style="@style/textActivity"
         />
 
     <LinearLayout
@@ -33,9 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginRight="@dimen/spacing_large"
-            android:layout_marginBottom="@dimen/spacing_large"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
             app:cardElevation="5.00dp"
             app:contentPadding="12dp"
 

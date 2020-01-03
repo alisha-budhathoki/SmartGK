@@ -1,4 +1,4 @@
-package com.example.smartgk.Fragment;
+package com.example.smartgk.Fragment.ProfileFragmentPackage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,8 +18,12 @@ import androidx.viewpager.widget.ViewPager;
 import com.bumptech.glide.Glide;
 import com.example.smartgk.Actvities.ChangePasswordActivity;
 import com.example.smartgk.Actvities.EditProfileActivity;
-import com.example.smartgk.Actvities.SharedPreferenceClass;
-import com.example.smartgk.Actvities.ViewPage;
+import com.example.smartgk.Fragment.CourseDetailFragmentTabs.ExamFragment;
+import com.example.smartgk.Fragment.ProfileFragmentPackage.InvoiceFragment;
+import com.example.smartgk.Fragment.ProfileFragmentPackage.ViewCoursesFragment;
+import com.example.smartgk.Fragment.ViewPage;
+import com.example.smartgk.utitlies.SharedPreferenceClass;
+import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -27,7 +31,7 @@ public class ProfileFragment extends Fragment {
     Toolbar toolbar;
     private TabLayout tabLayout;
     ViewPager viewPager;
-    TextView profName;
+    TextView profName, usernameProfle, phoneProfile, addressProfile, urlProfile, emailProfile;
     ImageView profImage;
     SharedPreferenceClass sharedPreferenceClass;
     Button changePassword, editProfile;
@@ -43,9 +47,17 @@ public class ProfileFragment extends Fragment {
         profImage = view.findViewById(R.id.profImg);
         changePassword = view.findViewById(R.id.chngPw);
         editProfile = view.findViewById(R.id.edtProf);
+        usernameProfle = view.findViewById(R.id.usernameProf);
+        emailProfile = view.findViewById(R.id.emailAdderessProf);
+        addressProfile = view.findViewById(R.id.locationProf);
+
+
 
         sharedPreferenceClass = new SharedPreferenceClass(getContext());
         profName.setText(sharedPreferenceClass.getName());
+        usernameProfle.setText(sharedPreferenceClass.getName());
+        emailProfile.setText(sharedPreferenceClass.getEmail());
+        addressProfile.setText(sharedPreferenceClass.getUid());
 
         Glide
                 .with(getContext())
@@ -84,4 +96,10 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
-}
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).toolbarName("Profile");
+    }
+
+    }

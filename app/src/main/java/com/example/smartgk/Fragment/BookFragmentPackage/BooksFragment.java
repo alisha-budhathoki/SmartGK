@@ -1,4 +1,4 @@
-package com.example.smartgk.Fragment;
+package com.example.smartgk.Fragment.BookFragmentPackage;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Adapter.BuyBooksAdapter;
 import com.example.smartgk.Adapter.BuyBooksAdapter2;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;

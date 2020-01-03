@@ -14,8 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Fragment.BookDetailsFragment;
-import com.example.smartgk.Fragment.BooksFragment;
+import com.example.smartgk.Fragment.BookFragmentPackage.BookDetailsFragment;
+import com.example.smartgk.Fragment.BookFragmentPackage.BooksFragment;
 import com.example.smartgk.R;
 import com.example.smartgk.model.BuyBooks;
 

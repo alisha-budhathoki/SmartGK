@@ -1,4 +1,4 @@
-package com.example.smartgk.Fragment;
+package com.example.smartgk.Fragment.CourseDetailFragmentTabs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.smartgk.Actvities.ViewPage;
+import com.example.smartgk.Fragment.ViewPage;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.google.android.material.tabs.TabLayout;

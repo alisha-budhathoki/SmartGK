@@ -1,4 +1,4 @@
-package com.example.smartgk.Fragment;
+package com.example.smartgk.Fragment.NewsFragmentPackage;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,11 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartgk.Adapter.NewsAdapter;
-import com.example.smartgk.Adapter.SucessStoriesAdapter;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.example.smartgk.model.News;
-import com.example.smartgk.model.SucessStories;
 
 import java.util.ArrayList;
 

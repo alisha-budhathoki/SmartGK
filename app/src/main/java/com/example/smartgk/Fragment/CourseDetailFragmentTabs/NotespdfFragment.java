@@ -1,4 +1,4 @@
-package com.example.smartgk.Fragment;
+package com.example.smartgk.Fragment.CourseDetailFragmentTabs;
 
 import android.Manifest;
 import android.content.Intent;

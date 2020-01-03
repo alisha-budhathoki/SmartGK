@@ -1,4 +1,4 @@
-package com.example.smartgk.Fragment;
+package com.example.smartgk.Fragment.BookFragmentPackage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.smartgk.Actvities.InquiryActivity;
-import com.example.smartgk.Actvities.ViewPage;
+import com.example.smartgk.Fragment.ViewPage;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.google.android.material.tabs.TabLayout;

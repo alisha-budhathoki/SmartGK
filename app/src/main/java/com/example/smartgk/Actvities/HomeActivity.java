@@ -5,11 +5,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.example.smartgk.Fragment.ExamFragment;
-import com.example.smartgk.Fragment.LiveClassFragment;
-import com.example.smartgk.Fragment.NotespdfFragment;
-import com.example.smartgk.Fragment.NoticeFragment;
-import com.example.smartgk.Fragment.VideosFragment;
+import com.example.smartgk.Fragment.CourseDetailFragmentTabs.ExamFragment;
+import com.example.smartgk.Fragment.CourseDetailFragmentTabs.LiveClassFragment;
+import com.example.smartgk.Fragment.CourseDetailFragmentTabs.NotespdfFragment;
+import com.example.smartgk.Fragment.CourseDetailFragmentTabs.NoticeFragment;
+import com.example.smartgk.Fragment.CourseDetailFragmentTabs.VideosFragment;
+import com.example.smartgk.Fragment.ViewPage;
 import com.example.smartgk.R;
 import com.google.android.material.tabs.TabLayout;
 

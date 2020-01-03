@@ -1,7 +1,6 @@
 package com.example.smartgk.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Fragment.BookDetailsFragment;
-import com.example.smartgk.Fragment.CourseDetailFragment;
-import com.example.smartgk.Fragment.CourseFragment;
+import com.example.smartgk.Fragment.CoursesFragmentPackage.CourseDetailFragment;
 import com.example.smartgk.Fragment.HomeFragmentSearch;
 import com.example.smartgk.R;
 import com.example.smartgk.model.BestCourses;

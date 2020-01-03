@@ -13,21 +13,6 @@
         tools:context=".MainActivity">
 
 
-
-        <TextView
-            android:id="@+id/profTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/heading1"
-            android:text="Profile"
-            android:textColor="@color/mintGreen"
-            android:textStyle="bold"
-            android:layout_marginLeft="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
         <ImageView
             android:id="@+id/profImg"
             android:layout_width="@dimen/_105sdp"
@@ -38,7 +23,7 @@
             android:contentDescription="Profile Image"
             android:layout_marginLeft="@dimen/spacing_large"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profTxt"
+            app:layout_constraintTop_toTopOf="parent"
             />
 
         <TextView
@@ -51,7 +36,7 @@
             android:layout_marginLeft="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_12sdp"
             app:layout_constraintStart_toEndOf="@+id/profImg"
-            app:layout_constraintTop_toBottomOf="@+id/profTxt"
+            app:layout_constraintTop_toTopOf="parent"
             />
         <TextView
             android:id="@+id/desc"
@@ -113,7 +98,7 @@
                 android:elevation="@dimen/_200sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="1dp"
+                app:cardElevation="5dp"
                 app:cardUseCompatPadding="true"
                 app:contentPadding="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -131,6 +116,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:src="@drawable/user"></ImageView>
                     <TextView
+                        android:id="@+id/usernameProf"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="John Doe"
@@ -147,6 +133,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/profiIcn"
                         android:src="@drawable/telephone"></ImageView>
                     <TextView
+                        android:id="@+id/phoneNoProf"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0000-000-000"
@@ -164,6 +151,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/phnIcn"
                         android:src="@drawable/ic_location_on_black_24dp"></ImageView>
                     <TextView
+                        android:id="@+id/locationProf"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/spacing_small"
@@ -183,6 +171,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/loctn"
                         android:src="@drawable/www"></ImageView>
                     <TextView
+                        android:id="@+id/urlProf"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="www.johndoe.com.np"
@@ -200,12 +189,13 @@
                         app:layout_constraintTop_toBottomOf="@+id/web"
                         android:src="@drawable/envelope"></ImageView>
                     <TextView
+                        android:id="@+id/emailAdderessProf"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="johmdoe@sample.com"
                         android:layout_marginTop="@dimen/spacing_small"
                         app:layout_constraintTop_toBottomOf="@+id/web"
-                        app:layout_constraintStart_toEndOf="@+id/hom"
+                        app:layout_constraintStart_toEndOf="@+id/web"
                         android:layout_marginLeft="@dimen/spacing_small"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

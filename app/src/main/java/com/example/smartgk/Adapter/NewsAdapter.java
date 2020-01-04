@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -18,6 +19,7 @@ import com.example.smartgk.Fragment.NewsFragmentPackage.NewsDetailFragment;
 import com.example.smartgk.Fragment.NewsFragmentPackage.NewsFragment;
 import com.example.smartgk.R;
 import com.example.smartgk.model.News;
+import com.example.smartgk.utitlies.Constants;
 
 import java.util.List;
 
@@ -53,12 +55,20 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
                 Fragment fragment = new NewsDetailFragment();
                 Bundle args = new Bundle();
                 FragmentTransaction transaction = newsfragment.getActivity().getSupportFragmentManager().beginTransaction();
+                Bundle bundle = new Bundle();
+                bundle.putString(Constants.NEWS_TITLE,holder.newsTitle.getText().toString());
+                bundle.putString(Constants.NEWS_DESCRIPTION, holder.newsDesc.getText().toString());
+                Toast.makeText(newsfragment.getContext(), "Sucessfull", Toast.LENGTH_SHORT).show();
+                fragment.setArguments(bundle);
+
                 transaction.replace(R.id.main_content, fragment);
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.addToBackStack(null);
                 transaction.commit();
-            }
+
+                    }
         });
+        holder.newsImage.setImageResource(mList.get(position).getNewsImg());
 
     }
 
@@ -70,7 +80,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         RecyclerView recyclerView;
         ImageView newsImage;
-        TextView newsDate, newsDesc;
+        TextView newsDate, newsDesc, newsTitle;
         CardView cardNews;
 
         public MyViewHolder(View itemView) {
@@ -79,6 +89,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             newsImage = (ImageView) itemView.findViewById(R.id.newsImg);
             newsDate = itemView.findViewById(R.id.newsDate);
             newsDesc = itemView.findViewById(R.id.newsDesc);
+            newsTitle = itemView.findViewById(R.id.newsTitleGoes);
 
         }
 

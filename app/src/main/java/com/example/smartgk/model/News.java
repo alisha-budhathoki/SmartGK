@@ -3,12 +3,13 @@ package com.example.smartgk.model;
 public class News {
 
     int newsImg;
-    String newsDate, newsDesc;
+    String newsDate, newsDesc, newsTitle;
 
     public News() {
         this.newsImg = newsImg;
         this.newsDate = newsDate;
         this.newsDesc = newsDesc;
+        this.newsTitle = newsTitle;
     }
 
     public int getNewsImg() {
@@ -33,5 +34,13 @@ public class News {
 
     public void setNewsDesc(String newsDesc) {
         this.newsDesc = newsDesc;
+    }
+
+    public String getNewsTitle() {
+        return newsTitle;
+    }
+
+    public void setNewsTitle(String newsTitle) {
+        this.newsTitle = newsTitle;
     }
 }

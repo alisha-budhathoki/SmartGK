@@ -1,6 +1,8 @@
 package com.example.smartgk.Fragment.BookFragmentPackage;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.print.PrinterId;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.smartgk.Adapter.BuyBooksAdapter2;
 import com.example.smartgk.MainActivity;
@@ -23,6 +26,8 @@ public class BooksFragment extends Fragment {
     RecyclerView recyclerView;
     private ArrayList<BuyBooks> mList3;
     BuyBooksAdapter2 buyBooksAdapter;
+    SwipeRefreshLayout swipeRefreshLayout;
+    Handler handler = new Handler();
 
     private int[] myBookImageList = new int[]{R.drawable.pic_alchemist, R.drawable.pic_brave,R.drawable.pic_leanin, R.drawable.pic_brave,R.drawable.pic_alchemist,R.drawable.pic_alchemist,R.drawable.pic_alchemist,R.drawable.pic_alchemist};
     private String[] myBookPriceList = new String[]{"100","380" ,"1300","1500","540","540","540","540"};
@@ -32,6 +37,12 @@ public class BooksFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_books, container, false);
+        recyclerView = view.findViewById(R.id.recyclerBook);
+        //swiperefreshlayout
+        swipeRefreshLayout = view.findViewById(R.id.simpleSwipeRefresh);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.black));
+        swipeRefreshLayout.setOnRefreshListener(refreshListener);
+
 
         recyclerView = view.findViewById(R.id.recyclerBook);
         mList3 = seeBooks();
@@ -43,9 +54,8 @@ public class BooksFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // set Vertical Orientation
         recyclerView.setLayoutManager(gridLayoutManager);
-         // set LayoutManager to RecyclerView
+        // set LayoutManager to RecyclerView
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-
 
         return view;
     }
@@ -62,6 +72,24 @@ public class BooksFragment extends Fragment {
         }
         return booklist;
     }
+
+    private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+
+        @Override
+        public void onRefresh() {
+            mList3 = seeBooks();
+            recyclerView = getView().findViewById(R.id.recyclerBook);
+            buyBooksAdapter = new BuyBooksAdapter2(getContext(), mList3, BooksFragment.this);
+            recyclerView.setAdapter(buyBooksAdapter);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+            gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // set Vertical Orientation
+            recyclerView.setLayoutManager(gridLayoutManager);
+            swipeRefreshLayout.setRefreshing(false);
+
+        }
+    };
+
+
 
     @Override
     public void onResume() {

@@ -6,6 +6,9 @@ import android.print.PrinterId;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +30,6 @@ public class BooksFragment extends Fragment {
     private ArrayList<BuyBooks> mList3;
     BuyBooksAdapter2 buyBooksAdapter;
     SwipeRefreshLayout swipeRefreshLayout;
-    Handler handler = new Handler();
 
     private int[] myBookImageList = new int[]{R.drawable.pic_alchemist, R.drawable.pic_brave,R.drawable.pic_leanin, R.drawable.pic_brave,R.drawable.pic_alchemist,R.drawable.pic_alchemist,R.drawable.pic_alchemist,R.drawable.pic_alchemist};
     private String[] myBookPriceList = new String[]{"100","380" ,"1300","1500","540","540","540","540"};
@@ -36,8 +38,17 @@ public class BooksFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_books, container, false);
         recyclerView = view.findViewById(R.id.recyclerBook);
+
+        //Animation
+        Animation fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setDuration(1000);
+        AnimationSet animation = new AnimationSet(true);
+        animation.addAnimation(fadeIn);
+        view.startAnimation(animation);
+
         //swiperefreshlayout
         swipeRefreshLayout = view.findViewById(R.id.simpleSwipeRefresh);
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.black));
@@ -77,6 +88,13 @@ public class BooksFragment extends Fragment {
 
         @Override
         public void onRefresh() {
+
+            Animation fadeIn = new AlphaAnimation(0,1);
+            fadeIn.setDuration(1000);
+            AnimationSet animation = new AnimationSet(true);
+            animation.addAnimation(fadeIn);
+            getView().startAnimation(animation);
+
             mList3 = seeBooks();
             recyclerView = getView().findViewById(R.id.recyclerBook);
             buyBooksAdapter = new BuyBooksAdapter2(getContext(), mList3, BooksFragment.this);

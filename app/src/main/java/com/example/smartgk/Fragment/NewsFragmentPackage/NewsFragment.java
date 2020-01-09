@@ -4,12 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.smartgk.Adapter.NewsAdapter;
 import com.example.smartgk.MainActivity;
@@ -28,10 +33,23 @@ public class NewsFragment extends Fragment {
     NewsAdapter newsAdapter;
     RecyclerView recyclerViewNews;
     ArrayList<News> mListNews;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
+
+        //Animation
+        Animation fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setDuration(1000);
+        AnimationSet animation = new AnimationSet(true);
+        animation.addAnimation(fadeIn);
+        view.startAnimation(animation);
+
+        //swiperefreshlayout
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshNews);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.black));
+        swipeRefreshLayout.setOnRefreshListener(refreshListener);
 
         recyclerViewNews = view.findViewById(R.id.recyclerNews);
         mListNews = seeNews();
@@ -56,6 +74,27 @@ public class NewsFragment extends Fragment {
         }
         return listNews;
     }
+
+    private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+
+        @Override
+        public void onRefresh() {
+
+            Animation fadeIn = new AlphaAnimation(0,1);
+            fadeIn.setDuration(1000);
+            AnimationSet animation = new AnimationSet(true);
+            animation.addAnimation(fadeIn);
+            getView().startAnimation(animation);
+
+            mListNews = seeNews();
+            recyclerViewNews = getView().findViewById(R.id.recyclerNews);
+            newsAdapter = new NewsAdapter(getContext(), mListNews, NewsFragment.this);
+            recyclerViewNews.setAdapter(newsAdapter);
+            recyclerViewNews.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            swipeRefreshLayout.setRefreshing(false);
+
+        }
+    };
 
     @Override
     public void onResume() {

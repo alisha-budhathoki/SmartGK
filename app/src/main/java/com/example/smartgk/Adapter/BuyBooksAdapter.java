@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -18,6 +19,7 @@ import com.example.smartgk.Fragment.BookFragmentPackage.BookDetailsFragment;
 import com.example.smartgk.Fragment.HomeFragmentSearch;
 import com.example.smartgk.R;
 import com.example.smartgk.model.BuyBooks;
+import com.example.smartgk.utitlies.Constants;
 
 import java.util.List;
 
@@ -51,8 +53,13 @@ public class BuyBooksAdapter extends RecyclerView.Adapter<BuyBooksAdapter.MyView
             @Override
             public void onClick(View v) {
                 Fragment fragment = new BookDetailsFragment();
-                Bundle args = new Bundle();
                 FragmentTransaction transaction = homeFragmentSearch.getActivity().getSupportFragmentManager().beginTransaction();
+                Bundle bundle = new Bundle();
+                bundle.putString(Constants.BOOK_TITLE1,holder.bookTitle.getText().toString());
+                bundle.putString(Constants.BOOK_PRICE, holder.bookPrice.getText().toString());
+                fragment.setArguments(bundle);
+                Toast.makeText(homeFragmentSearch.getContext(), buyBooks.getBookName(),Toast.LENGTH_SHORT).show();
+
                 transaction.replace(R.id.main_content, fragment);
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.addToBackStack(null);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +20,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.smartgk.Actvities.PdfActivity;
 import com.example.smartgk.R;
+import com.example.smartgk.utitlies.Permissions;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import flipagram.assetcopylib.AssetCopier;
 
@@ -58,15 +62,6 @@ public class NotespdfFragment extends Fragment {
 
         //for downlaoding notes
 
-        if (ContextCompat.checkSelfPermission(
-                getContext(),
-                Manifest.permission.READ_CONTACTS)
-                != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    0);
-        }
 
         downlaod.setOnClickListener(new View.OnClickListener() {
             @Override

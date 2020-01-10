@@ -54,12 +54,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             @Override
             public void onClick(View v) {
                 Fragment fragment = new NewsDetailFragment();
-                Bundle args = new Bundle();
                 FragmentTransaction transaction = newsfragment.getActivity().getSupportFragmentManager().beginTransaction();
                 Bundle bundle = new Bundle();
                 bundle.putString(Constants.NEWS_TITLE,holder.newsTitle.getText().toString());
                 bundle.putString(Constants.NEWS_DESCRIPTION, holder.newsDesc.getText().toString());
-                Toast.makeText(newsfragment.getContext(), "Sucessfull", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(newsfragment.getContext(), "Sucessfull", Toast.LENGTH_SHORT).show();
                 fragment.setArguments(bundle);
 
                 transaction.replace(R.id.main_content, fragment);

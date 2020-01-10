@@ -1,20 +1,38 @@
 package com.example.smartgk.Retrofit;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiClient {
-    private static Retrofit retrofit;
-    private static final String BASE_URL = "http://157.230.215.79/";
-    public static final String BASE_URL_T = "http://157.230.215.79";
+    public static ApiInterface apiInterface = null;
 
-    public static Retrofit getRetrofitInstance(){
-        if (retrofit == null){
-            retrofit = new retrofit2.Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+    private static final String BASE_URL = "http://cosmicnepal.com/client/newsmartgk/smartgk/api/api/";
+
+    public static Retrofit retrofit = null;
+
+    public static Retrofit getApiClient(){
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        if(retrofit == null){
+            retrofit=new Retrofit.Builder()
+                    .baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson))
+                    .addConverterFactory(ScalarsConverterFactory.create())
                     .build();
         }
         return retrofit;
     }
+    public static void makeApiInterface() {
+        if (retrofit == null)
+            getApiClient();
+
+        if (apiInterface == null)
+            apiInterface = retrofit.create(ApiInterface.class);
+    }
+
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,8 @@ import com.example.smartgk.R;
 import com.example.smartgk.model.BestCourses;
 import com.example.smartgk.model.BuyBooks;
 import com.example.smartgk.model.NewCourses;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 import java.util.ArrayList;
 
@@ -32,6 +35,9 @@ public class HomeFragmentSearch extends Fragment {
     NewCourseAdapter newCourseAdapter;
     private ArrayList<BuyBooks> mList3;
     BuyBooksAdapter buyBooksAdapter;
+    CarouselView carouselView;
+
+    int[] sampleImages ={R.drawable.ic_child_pic,R.drawable.ic_child_pic,R.drawable.ic_child_pic, R.drawable.ic_child_pic, R.drawable.ic_child_pic};
 
 
 
@@ -56,6 +62,10 @@ public class HomeFragmentSearch extends Fragment {
         recyclerView1.setAdapter(bestCoursesAdapter);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
+        carouselView = (CarouselView) view.findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
+
+        carouselView.setImageListener(imageListener);
         //for new course
 
         recyclerView2 = view.findViewById(R.id.recycler2);
@@ -75,6 +85,13 @@ public class HomeFragmentSearch extends Fragment {
 
         return view;
     }
+
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
 
     private ArrayList<BuyBooks> seeBooks() {
         ArrayList<BuyBooks> list3 = new ArrayList<>();

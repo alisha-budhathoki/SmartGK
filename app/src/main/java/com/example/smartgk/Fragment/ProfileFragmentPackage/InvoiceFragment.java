@@ -2,11 +2,15 @@ package com.example.smartgk.Fragment.ProfileFragmentPackage;
 
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -26,15 +30,18 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.smartgk.R;
+import com.example.smartgk.utitlies.Permissions;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class InvoiceFragment extends Fragment {
-Button btnSavePdf;
+    private static final int VERIFY_PERMISSION_REQUEST = 100;
+    Button btnSavePdf;
 ConstraintLayout mainConstarint;
 Bitmap bitmap;
+    private String TAG = "InvoiceFragment";
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @Override
@@ -50,7 +57,15 @@ Bitmap bitmap;
 
         builder.detectFileUriExposure();
 
-
+        if (ContextCompat.checkSelfPermission(
+                getContext(),
+                Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    0);
+        }
 
         mainConstarint = view.findViewById(R.id.mainConstraint);
 
@@ -58,13 +73,14 @@ Bitmap bitmap;
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                Log.d("size"," "+mainConstarint.getWidth() +"  "+mainConstarint.getWidth());
-                bitmap = loadBitmapFromView(mainConstarint, mainConstarint.getWidth(), mainConstarint.getHeight());
-                createPdf();
+                Log.d("size", " " + mainConstarint.getWidth() + "  " + mainConstarint.getWidth());
+                    bitmap = loadBitmapFromView(mainConstarint, mainConstarint.getWidth(), mainConstarint.getHeight());
+                    createPdf();
             }
         });
 return view;
     }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -77,6 +93,7 @@ return view;
         float width = displaymetrics.widthPixels ;
 
         int convertHighet = (int) hight, convertWidth = (int) width;
+
 
 //        Resources mResources = getResources();
 //        Bitmap bitmap = BitmapFactory.decodeResource(mResources, R.drawable.screenshot);

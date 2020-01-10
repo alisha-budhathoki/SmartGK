@@ -12,25 +12,24 @@ public class SharedPreferenceClass {
         sp = context.getSharedPreferences("UserDetail",Context.MODE_PRIVATE);
     }
 
-    public void saveData(String u_id,String name,String email,String pic){
+    public void saveData(String u_id,String name,String email,String pic, String bio){
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("u_id",u_id);
         editor.putString("name",name);
         editor.putString("email",email);
         editor.putString("pic",pic);
+        editor.putString("bio", bio);
         editor.apply();
     }
+
+
+
     public void isLooggedIn(boolean login){
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isLoogedIn",login);
         editor.apply();
     }
 
-//    public void isLooggedIn(){
-//        SharedPreferences.Editor editor = sp.edit();
-//        editor.putBoolean("isLoogedIn",true);
-//        editor.apply();
-//    }
 
     public boolean isLoggedIn(){
         return sp.getBoolean("isLoogedIn",false);
@@ -51,4 +50,8 @@ public class SharedPreferenceClass {
     public String getUid(){
         return sp.getString("u_id","");
     }
+
+    public String getBio(){ return sp.getString("bio", "");}
+
+
 }

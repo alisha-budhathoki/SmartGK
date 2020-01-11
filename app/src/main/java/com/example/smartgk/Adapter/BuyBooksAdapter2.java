@@ -56,7 +56,7 @@ public class BuyBooksAdapter2 extends RecyclerView.Adapter<BuyBooksAdapter2.MyVi
                 Fragment fragment = new BookDetailsFragment();
                 FragmentTransaction transaction = booksFragment.getActivity().getSupportFragmentManager().beginTransaction();
                 Bundle bundle = new Bundle();
-                bundle.putString(Constants.BOOK_TITLE2,holder.bookTitle.getText().toString());
+                bundle.putString(Constants.BOOK_TITLE1,holder.bookTitle.getText().toString());
                 bundle.putString(Constants.BOOK_PRICE2, holder.bookPrice.getText().toString());
                 fragment.setArguments(bundle);
                 Toast.makeText(booksFragment.getContext(), buyBooks.getBookName(),Toast.LENGTH_SHORT).show();

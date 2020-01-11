@@ -62,7 +62,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/emailEdittextr" />
 
                 <EditText
-                    android:id="@+id/confpwdEdtTxt"
+                    android:id="@+id/confpwdEdtTxtr"
                     style="@style/SingnUpINEditText"
                     android:layout_marginBottom="@dimen/spacing_large"
                     android:hint="Retype Password"
@@ -101,7 +101,7 @@
         ></TextView>
 
     <ImageView
-        android:id="@+id/fbIcon"
+        android:id="@+id/fbIconr"
         android:layout_width="@dimen/_18sdp"
         android:layout_height="@dimen/_18sdp"
         android:src="@drawable/fb_logo"
@@ -111,24 +111,24 @@
         android:layout_marginTop="@dimen/_6sdp"
         />
     <ImageView
-        android:id="@+id/google_plusIcon"
+        android:id="@+id/google_plusIconr"
         android:layout_width="@dimen/_18sdp"
         android:layout_height="@dimen/_18sdp"
         android:src="@drawable/google_logo"
         android:layout_marginTop="@dimen/_6sdp"
         android:layout_marginLeft="@dimen/spacing_large"
-        app:layout_constraintStart_toEndOf="@+id/fbIcon"
+        app:layout_constraintStart_toEndOf="@+id/fbIconr"
         app:layout_constraintTop_toBottomOf="@+id/txtRegWth"
         />
 
     <TextView
-        android:id="@+id/alreadyAcnt"
+        android:id="@+id/alreadyAcntr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Already have an account ?"
         android:layout_marginLeft="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fbIcon"
+        app:layout_constraintTop_toBottomOf="@+id/fbIconr"
         style="@style/textActivity"
         />
 
@@ -137,7 +137,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/alreadyAcnt"
+        app:layout_constraintTop_toBottomOf="@+id/alreadyAcntr"
         android:text="Go to login page"
         android:textSize="@dimen/_16sdp"
         android:layout_marginTop="@dimen/spacing_medium"
@@ -156,6 +156,18 @@
         android:textSize="@dimen/heading3"
         android:layout_marginBottom="@dimen/_16sdp"
         android:layout_marginRight="@dimen/_16sdp"
+        />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerProgress"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
 

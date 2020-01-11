@@ -38,8 +38,8 @@ public class BookDetailsFragment extends Fragment {
          Bundle b = getArguments();
                 if (b != null)
                 {
-                    String bookTitle2 = getArguments().getString(Constants.BOOK_TITLE2);
-                    bookName1.setText(bookTitle2);
+//                    String bookTitle2 = getArguments().getString(Constants.BOOK_TITLE2);
+//                    bookName1.setText(bookTitle2);
 
                     String bookTitle1 = getArguments().getString(Constants.BOOK_TITLE1);
                     bookName1.setText(bookTitle1);

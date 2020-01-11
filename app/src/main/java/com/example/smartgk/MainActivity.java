@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 toolbar_title.setText("Home"); // changes
 
-                fragmentManager.beginTransaction().replace(R.id.main_content, new HomeFragmentSearch()).addToBackStack(null).commit();
+                fragmentManager.beginTransaction().replace(R.id.main_content, new HomeFragmentSearch()).commit();
                 break;
 
             case 1:

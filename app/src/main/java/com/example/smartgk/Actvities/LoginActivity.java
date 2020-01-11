@@ -76,15 +76,15 @@ public class LoginActivity extends AppCompatActivity {
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-
+           SharedPreferenceClass sharedPreferenceClass = new SharedPreferenceClass(context);
             UserDetails userDetails = intent.getParcelableExtra(LoginIntentService.MESSAGE_KEY);
             if(userDetails!=null) {
+                System.out.println("UserDetail : "+userDetails.getName());
                 loginActivityViewModel.saveVendorDetails(userDetails);
                 progressBar.setVisibility(View.GONE);
 
                 sharedPreferenceClass.saveData(userDetails.getId(), userDetails.getName(), userDetails.getEmail(), userDetails.getImage(),userDetails.getBio());
-
-
+                sharedPreferenceClass.isLooggedIn(true);
                 Toast.makeText(LoginActivity.this, "Login Sucessful",Toast.LENGTH_SHORT).show();
 
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class) ;
@@ -337,8 +337,8 @@ progressBar.setVisibility(View.GONE);
     }
 
     private void intitWidgets() {
-        emailL = findViewById(R.id.emailEdittextr);
-        passwordL = findViewById(R.id.passwordEditextr);
+        emailL = findViewById(R.id.emailEdittextl);
+        passwordL = findViewById(R.id.passwordEditextl);
         login = findViewById(R.id.login);
         frgt = findViewById(R.id.frgtTxt);
         gotoRegister = findViewById(R.id.registerAccount);

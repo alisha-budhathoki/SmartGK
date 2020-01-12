@@ -3,6 +3,7 @@ package com.example.smartgk.Database;
 import android.content.Context;
 
 import com.example.smartgk.Services.LoginIntentService;
+import com.example.smartgk.Services.RegisterService;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -40,5 +41,9 @@ public class AppRepository {
                 mDb.userDetailDao().insertVendorDetails(userDetails);
             }
         });
+    }
+
+    public void registerUsers(String email, String password) {
+        RegisterService.startRegistration(context, email, password);
     }
 }

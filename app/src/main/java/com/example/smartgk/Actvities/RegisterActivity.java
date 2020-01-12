@@ -1,11 +1,13 @@
 package com.example.smartgk.Actvities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
+import com.example.smartgk.Services.RegisterService;
+import com.example.smartgk.Viewmodel.RegisterViewmodel;
 import com.example.smartgk.utitlies.SharedPreferenceClass;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -35,7 +39,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText regEmail, passwd, cPasswd;
+    EditText regEmail, regPasswd, regCPasswd;
     Button reigstrBtn;
     TextView goToLogin, goHomeFromRegister;
     SharedPreferences sharedPref;
@@ -46,8 +50,9 @@ public class RegisterActivity extends AppCompatActivity {
     CallbackManager mFacebookCallbackManager;
     String email,name,first_name,last_name;
     ProgressBar progressBar;
-
-
+    View view;
+    String userEmail, userPassword;
+    RegisterViewmodel registerctivityViewmodel;
 
 
 
@@ -62,7 +67,26 @@ public class RegisterActivity extends AppCompatActivity {
         sharedPref = getSharedPreferences(getPackageName(), MODE_PRIVATE);
 
 
+
         initWidgets();
+        initViewModel();
+
+        reigstrBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            if (validateform() == false){
+                hideProgressBar();
+            }
+
+            else {
+                registerctivityViewmodel.registerUsers(regEmail.getText().toString(), regPasswd.getText().toString());
+                showProgressbar();
+
+            }
+            }
+        });
+
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestId()
@@ -79,14 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        reigstrBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (validateform(regEmail, passwd, cPasswd) == false) {
 
-                }
-            }
-        });
         goHomeFromRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,28 +205,41 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private boolean validateform(EditText regEmail, EditText passwd, EditText cPasswd) {
+    private void initViewModel() {
+        registerctivityViewmodel = ViewModelProviders.of(this).get(RegisterViewmodel.class);
+
+    }
+
+    private void showProgressbar() {
+        progressBar.setVisibility(view.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        progressBar.setVisibility(view.GONE);
+    }
+
+    private boolean validateform() {
         boolean valid = true;
         String emailR = regEmail.getText().toString();
-        String passwordR = passwd.getText().toString();
-        String cPasswordR = cPasswd.getText().toString();
+        String passwordR = regPasswd.getText().toString();
+        String cPasswordR = regCPasswd.getText().toString();
 
         if (emailR.isEmpty() || !isEmailValid(emailR)){
             regEmail.setError("Enter a valid Email");
         }
-        if (passwordR.isEmpty() || passwd.length() <4 || passwd.length() >10){
-            passwd.setError("Enter between 4 and 10 alphanumeric characters");
+        if (passwordR.isEmpty() || regPasswd.length() <4 || regPasswd.length() >10){
+            regPasswd.setError("Enter between 4 and 10 alphanumeric characters");
             valid = false;
         }
 
 
 
         if(cPasswordR.isEmpty() || cPasswordR.length()<4||cPasswordR.length()>10 ||!(cPasswordR.equals(passwordR))) {
-            cPasswd.setError("Password do not match");
+            regCPasswd.setError("Password do not match");
             valid = false;
         }
         else {
-            cPasswd.setError(null);
+            regCPasswd.setError(null);
         }
 
 
@@ -224,8 +254,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void initWidgets() {
         regEmail = findViewById(R.id.emailEdittextr);
-        passwd = findViewById(R.id.passwordEditextr);
-        cPasswd = findViewById(R.id.confpwdEdtTxtr);
+        regPasswd = findViewById(R.id.passwordEditextr);
+        regCPasswd = findViewById(R.id.confpwdEdtTxtr);
         reigstrBtn = findViewById(R.id.registerBtn);
         goToLogin = findViewById(R.id.gotoLogn);
         goHomeFromRegister = findViewById(R.id.goHomer);

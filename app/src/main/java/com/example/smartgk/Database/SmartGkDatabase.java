@@ -32,7 +32,11 @@ public abstract class SmartGkDatabase extends RoomDatabase {
     }
 
     public abstract UserDetailDao userDetailDao();
-;
+
+//    public abstract BooksDao getBooksDao();
+
+
+    ;
 
 
 }

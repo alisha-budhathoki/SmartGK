@@ -234,7 +234,6 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-//Login bhayera aba uninstall garnu parchha
                     }
                 });
                 Bundle parameters = new Bundle();

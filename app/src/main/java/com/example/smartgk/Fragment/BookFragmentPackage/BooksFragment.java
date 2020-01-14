@@ -1,5 +1,6 @@
 package com.example.smartgk.Fragment.BookFragmentPackage;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.print.PrinterId;
@@ -9,6 +10,8 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,21 +22,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.smartgk.Adapter.BuyBooksAdapter2;
+import com.example.smartgk.Database.BookData;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
+import com.example.smartgk.Retrofit.ApiClient;
+import com.example.smartgk.Retrofit.ApiInterface;
+import com.example.smartgk.Viewmodel.BookViewModel;
+import com.example.smartgk.model.BooksModel;
 import com.example.smartgk.model.BuyBooks;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Observer;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.example.smartgk.Retrofit.ApiClient.apiInterface;
+import static  com.example.smartgk.Retrofit.ApiClient.makeApiInterface;
 
 public class BooksFragment extends Fragment {
     RecyclerView recyclerView;
-    private ArrayList<BuyBooks> mList3;
+    private ArrayList<BooksModel.Results> mList3;
     BuyBooksAdapter2 buyBooksAdapter;
     SwipeRefreshLayout swipeRefreshLayout;
+    BookViewModel bookViewModel;
+    ProgressBar progressBar;
+    ArrayList<BooksModel.Results> arrayList = new ArrayList<>();
 
-    private int[] myBookImageList = new int[]{R.drawable.pic_alchemist, R.drawable.pic_brave,R.drawable.pic_leanin, R.drawable.pic_brave,R.drawable.pic_alchemist,R.drawable.pic_alchemist,R.drawable.pic_alchemist,R.drawable.pic_alchemist};
-    private String[] myBookPriceList = new String[]{"100","380" ,"1300","1500","540","540","540","540"};
-    private String[] myBookTitle = new String[]{"Alchemist","Brave" ,"Lean in","Brave","Alchemist","Alchemist","Alchemist","Alchemist"};
 
     @Nullable
     @Override
@@ -41,6 +58,9 @@ public class BooksFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_books, container, false);
         recyclerView = view.findViewById(R.id.recyclerBook);
+        progressBar = view.findViewById(R.id.bookProgress);
+
+        progressBar.setVisibility(View.VISIBLE);
 
         //Animation
         Animation fadeIn = new AlphaAnimation(0, 1);
@@ -54,35 +74,36 @@ public class BooksFragment extends Fragment {
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.black));
         swipeRefreshLayout.setOnRefreshListener(refreshListener);
 
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<BooksModel> call = apiInterface.getBooks();
+        call.enqueue(new Callback<BooksModel>() {
+            @Override
+            public void onResponse(Call<BooksModel> call, Response<BooksModel> response) {
+                showBooks(getContext(), (ArrayList<BooksModel.Results>) response.body().results);
+                progressBar.setVisibility(View.GONE);
+            }
 
-        recyclerView = view.findViewById(R.id.recyclerBook);
-        mList3 = seeBooks();
-        buyBooksAdapter = new BuyBooksAdapter2(getContext(), mList3, BooksFragment.this);
-        recyclerView.setAdapter(buyBooksAdapter);
-//        recyclerView.setNestedScrollingEnabled(false);
-//        recyclerView,setFo
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
-        gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // set Vertical Orientation
-        recyclerView.setLayoutManager(gridLayoutManager);
-        // set LayoutManager to RecyclerView
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-
+            @Override
+            public void onFailure(Call<BooksModel> call, Throwable t) {
+            Toast.makeText(getContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            }
+        });
         return view;
     }
 
-    private ArrayList<BuyBooks> seeBooks() {
-        ArrayList<BuyBooks> booklist = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-            BuyBooks buyBooks = new BuyBooks();
-            buyBooks.setBookImg(myBookImageList[i]);
-            buyBooks.setBookName(myBookTitle[i]);
-            buyBooks.setBookPrice(myBookPriceList[i]);
+    private List<BooksModel.Results> showBooks(Context context, ArrayList<BooksModel.Results> results) {
 
-            booklist.add(buyBooks);
-        }
-        return booklist;
+        arrayList.addAll(results);
+        buyBooksAdapter = new BuyBooksAdapter2(getContext(), arrayList, BooksFragment.this);
+        recyclerView.setAdapter(buyBooksAdapter);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+        gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // set Vertical Orientation
+        recyclerView.setLayoutManager(gridLayoutManager);
+        return arrayList;
     }
+
+
 
     private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
 
@@ -95,9 +116,9 @@ public class BooksFragment extends Fragment {
             animation.addAnimation(fadeIn);
             getView().startAnimation(animation);
 
-            mList3 = seeBooks();
+
             recyclerView = getView().findViewById(R.id.recyclerBook);
-            buyBooksAdapter = new BuyBooksAdapter2(getContext(), mList3, BooksFragment.this);
+            buyBooksAdapter = new BuyBooksAdapter2(getContext(), arrayList, BooksFragment.this);
             recyclerView.setAdapter(buyBooksAdapter);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
             gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // set Vertical Orientation
@@ -105,6 +126,7 @@ public class BooksFragment extends Fragment {
             swipeRefreshLayout.setRefreshing(false);
 
         }
+
     };
 
 

@@ -1,5 +1,6 @@
 package com.example.smartgk.Fragment.ProfileFragmentPackage;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,12 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
@@ -22,19 +26,35 @@ import com.example.smartgk.Fragment.CourseDetailFragmentTabs.ExamFragment;
 import com.example.smartgk.Fragment.ProfileFragmentPackage.InvoiceFragment;
 import com.example.smartgk.Fragment.ProfileFragmentPackage.ViewCoursesFragment;
 import com.example.smartgk.Fragment.ViewPage;
+import com.example.smartgk.Retrofit.ApiClient;
+import com.example.smartgk.Retrofit.ApiInterface;
+//import com.example.smartgk.model.UserModelClass;
+import com.example.smartgk.model.user_model.UserModelClass;
 import com.example.smartgk.utitlies.SharedPreferenceClass;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.example.smartgk.Retrofit.ApiClient.apiInterface;
+import static  com.example.smartgk.Retrofit.ApiClient.makeApiInterface;
+
 public class ProfileFragment extends Fragment {
     Toolbar toolbar;
     private TabLayout tabLayout;
     ViewPager viewPager;
-    TextView profName, usernameProfle, phoneProfile, addressProfile, urlProfile, emailProfile;
+    TextView profName, usernameProfle, phoneProfile, addressProfile, urlProfile, emailProfile, profileBio ;
     ImageView profImage;
     SharedPreferenceClass sharedPreferenceClass;
     Button changePassword, editProfile;
+    ProgressBar progressBar;
+    //ArrayList<UserModelClass.Results> arrayList = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -50,14 +70,17 @@ public class ProfileFragment extends Fragment {
         usernameProfle = view.findViewById(R.id.usernameProf);
         emailProfile = view.findViewById(R.id.emailAdderessProf);
         addressProfile = view.findViewById(R.id.locationProf);
-
+        progressBar = view.findViewById(R.id.profileProgress);
+        phoneProfile = view.findViewById(R.id.phoneNoProf);
+        urlProfile = view.findViewById(R.id.urlProf);
+        profileBio= view.findViewById(R.id.profDesc);
 
 
         sharedPreferenceClass = new SharedPreferenceClass(getContext());
         profName.setText(sharedPreferenceClass.getName());
         usernameProfle.setText(sharedPreferenceClass.getName());
         emailProfile.setText(sharedPreferenceClass.getEmail());
-        addressProfile.setText(sharedPreferenceClass.getUid());
+        String uid = sharedPreferenceClass.getUid();
 
         Glide
                 .with(getContext())
@@ -78,6 +101,8 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 Intent toChangePw = new Intent(getContext(), ChangePasswordActivity.class);
                 startActivity(toChangePw);
+
+
             }
 });
 
@@ -94,8 +119,41 @@ public class ProfileFragment extends Fragment {
 
         tabLayout.setTabTextColors(getResources().getColor(R.color.mintGreen), getResources().getColor(R.color.white));
 
+
+        //bACKEND iNTEGRATION
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        retrofit2.Call<UserModelClass> call = apiInterface.getUserProfile(uid);
+        call.enqueue(new Callback<UserModelClass>() {
+            @Override
+            public void onResponse(Call<UserModelClass> call, Response<UserModelClass> response) {
+                if(response.isSuccessful()){
+                    if (response.body() != null){
+                        profName.setText(response.body().getResults().getUser().getName());
+                        addressProfile.setText(response.body().getResults().getUser().getAddress());
+                        phoneProfile.setText(response.body().getResults().getUser().getPhone_no());
+                        profileBio.setText(response.body().getResults().getUser().getBio());
+                        response.body().getResults().getGetPaper().get(0).getPaper_name();
+                    }
+                }
+
+
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<UserModelClass> call, Throwable t) {
+                Toast.makeText(getContext(),"Please check your Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return view;
     }
+
+//    private void showNews(Context context, ArrayList<UserModelClass.Results> results) {
+//        arrayList.addAll(results);
+//
+//    }
+
     @Override
     public void onResume() {
         super.onResume();

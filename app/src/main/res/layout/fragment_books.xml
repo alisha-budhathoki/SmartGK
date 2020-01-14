@@ -6,7 +6,6 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <EditText
         android:id="@+id/booksSearch"
         android:layout_width="match_parent"
@@ -23,8 +22,13 @@
         android:hint="Search"
         android:background="@drawable/round_button"
         />
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/simpleSwipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,9 +43,24 @@
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/booksSearch"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <ProgressBar
+        android:id="@+id/bookProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style=""/>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

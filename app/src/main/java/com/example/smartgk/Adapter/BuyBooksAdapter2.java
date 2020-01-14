@@ -15,9 +15,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.smartgk.Fragment.BookFragmentPackage.BookDetailsFragment;
 import com.example.smartgk.Fragment.BookFragmentPackage.BooksFragment;
 import com.example.smartgk.R;
+import com.example.smartgk.model.BooksModel;
 import com.example.smartgk.model.BuyBooks;
 import com.example.smartgk.utitlies.Constants;
 
@@ -25,12 +27,12 @@ import java.util.List;
 
 public class BuyBooksAdapter2 extends RecyclerView.Adapter<BuyBooksAdapter2.MyViewHolder> {
 
-    List<BuyBooks> mList;
+    public final List<BooksModel.Results> mList;
     Context context;
     BooksFragment booksFragment;
 
 
-    public BuyBooksAdapter2(Context context, List<BuyBooks> mList, BooksFragment booksFragment){
+    public BuyBooksAdapter2(Context context, List<BooksModel.Results> mList, BooksFragment booksFragment){
         this.context = context;
         this.mList = mList;
         this.booksFragment = booksFragment;
@@ -46,10 +48,14 @@ public class BuyBooksAdapter2 extends RecyclerView.Adapter<BuyBooksAdapter2.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        final BuyBooks buyBooks =mList.get(position);
-        holder.image.setImageResource(buyBooks.getBookImg());
-        holder.bookTitle.setText(buyBooks.getBookName());
-        holder.bookPrice.setText(buyBooks.getBookPrice());
+        final BooksModel.Results booksModel =mList.get(position);
+        Glide
+                .with((context) )
+                .load(booksModel.getImage())
+                .centerCrop()
+                .into(holder.image);
+        holder.bookTitle.setText(booksModel.getTitle());
+        holder.bookPrice.setText(booksModel.getPrice());
         holder.booksCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +65,7 @@ public class BuyBooksAdapter2 extends RecyclerView.Adapter<BuyBooksAdapter2.MyVi
                 bundle.putString(Constants.BOOK_TITLE1,holder.bookTitle.getText().toString());
                 bundle.putString(Constants.BOOK_PRICE2, holder.bookPrice.getText().toString());
                 fragment.setArguments(bundle);
-                Toast.makeText(booksFragment.getContext(), buyBooks.getBookName(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(booksFragment.getContext(), booksModel.getTitle(),Toast.LENGTH_SHORT).show();
 
                 transaction.replace(R.id.main_content, fragment);
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);

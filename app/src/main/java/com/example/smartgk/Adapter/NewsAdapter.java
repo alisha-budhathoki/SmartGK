@@ -2,6 +2,7 @@ package com.example.smartgk.Adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,21 +16,23 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.smartgk.Fragment.NewsFragmentPackage.NewsDetailFragment;
 import com.example.smartgk.Fragment.NewsFragmentPackage.NewsFragment;
 import com.example.smartgk.R;
 import com.example.smartgk.model.News;
+import com.example.smartgk.model.NewsModel;
 import com.example.smartgk.utitlies.Constants;
 
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> {
 
-    List<News> mList;
+    List<NewsModel.Results> mList;
     Context context;
     NewsFragment newsfragment;
 
-    public NewsAdapter(Context context, List<News> mList, NewsFragment newsFragment) {
+    public NewsAdapter(Context context, List<NewsModel.Results> mList, NewsFragment newsFragment) {
         this.context = context;
         this.mList = mList;
         this.newsfragment = newsFragment;
@@ -45,11 +48,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        final News news = mList.get(position);
-        holder.newsImage.setImageResource(news.getNewsImg());
-        holder.newsDate.setText(news.getNewsDate());
-        holder.newsDesc.setText(news.getNewsDesc());
-        holder.newsTitle.setText(news.getNewsTitle());
+        final NewsModel.Results news = mList.get(position);
+        Glide
+                .with((context) )
+                .load(news.getImage())
+                .centerCrop()
+                .into(holder.newsImage);
+        //holder.newsImage.setImageResource(news.());
+        holder.newsDate.setText(news.getCreated_at());
+
+        String trim =stripHtml(news.getDescription());
+        holder.newsDesc.setText(trim);
+
+        holder.newsTitle.setText(news.getName());
         holder.cardNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,8 +79,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
                     }
         });
-        holder.newsImage.setImageResource(mList.get(position).getNewsImg());
 
+    }
+
+    private String stripHtml(String description) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            return Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY).toString();
+        } else {
+            return Html.fromHtml(description).toString();
+        }
     }
 
     @Override

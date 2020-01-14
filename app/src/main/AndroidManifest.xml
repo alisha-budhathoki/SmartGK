@@ -86,6 +86,10 @@
             android:name=".Services.RegisterService"
             android:exported="false" />
 
+        <service
+            android:name=".Services.GetBooksService"
+            android:exported="false" />
+
     </application>
 
 </manifest>

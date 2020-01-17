@@ -14,4 +14,7 @@ public static final String USERNAME_LOGIN="username_login";
     public static final String BOOK_PRICE2 = "book_price2";
     public static final String USER_ID= "user_id_key";
 
+    public static final String url = "http://cosmicnepal.com/client/newsmartgk/smartgk/uploads/";
+
+
 }

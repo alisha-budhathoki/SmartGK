@@ -15,21 +15,23 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.smartgk.Fragment.BookFragmentPackage.BookDetailsFragment;
 import com.example.smartgk.Fragment.HomeFragmentSearch;
 import com.example.smartgk.R;
 import com.example.smartgk.model.BuyBooks;
+import com.example.smartgk.model.Home_model_real.Book;
 import com.example.smartgk.utitlies.Constants;
 
 import java.util.List;
 
 public class BuyBooksAdapter extends RecyclerView.Adapter<BuyBooksAdapter.MyViewHolder> {
 
-    List<BuyBooks> mList;
+    List<Book> mList;
     Context context;
     HomeFragmentSearch homeFragmentSearch;
 
-    public BuyBooksAdapter(Context context, List<BuyBooks> mList, HomeFragmentSearch homeFragmentSearch){
+    public BuyBooksAdapter(Context context, List<Book> mList, HomeFragmentSearch homeFragmentSearch){
         this.context = context;
         this.mList = mList;
         this.homeFragmentSearch = homeFragmentSearch;
@@ -45,10 +47,14 @@ public class BuyBooksAdapter extends RecyclerView.Adapter<BuyBooksAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        final BuyBooks buyBooks =mList.get(position);
-        holder.image.setImageResource(buyBooks.getBookImg());
-        holder.bookTitle.setText(buyBooks.getBookName());
-        holder.bookPrice.setText(buyBooks.getBookPrice());
+        final Book buyBooks =mList.get(position);
+        Glide
+                .with((context) )
+                .load(buyBooks.getImage())
+                .centerCrop()
+                .into(holder.image);
+        holder.bookTitle.setText(buyBooks.getTitle());
+        holder.bookPrice.setText(buyBooks.getPrice());
         holder.booksCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +64,7 @@ public class BuyBooksAdapter extends RecyclerView.Adapter<BuyBooksAdapter.MyView
                 bundle.putString(Constants.BOOK_TITLE1,holder.bookTitle.getText().toString());
                 bundle.putString(Constants.BOOK_PRICE, holder.bookPrice.getText().toString());
                 fragment.setArguments(bundle);
-                Toast.makeText(homeFragmentSearch.getContext(), buyBooks.getBookName(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(homeFragmentSearch.getContext(), buyBooks.getTitle(),Toast.LENGTH_SHORT).show();
 
                 transaction.replace(R.id.main_content, fragment);
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);

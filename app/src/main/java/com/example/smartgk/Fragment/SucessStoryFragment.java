@@ -15,12 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.smartgk.Adapter.NewCourseAdapter;
 import com.example.smartgk.Adapter.SucessStoriesAdapter;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
-import com.example.smartgk.model.BestCourses;
-import com.example.smartgk.model.NewCourses;
 import com.example.smartgk.model.SucessStories;
 
 import java.util.ArrayList;

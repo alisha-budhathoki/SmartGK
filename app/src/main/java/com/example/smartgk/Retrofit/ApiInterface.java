@@ -1,6 +1,8 @@
 package com.example.smartgk.Retrofit;
 
 import com.example.smartgk.model.BooksModel;
+import com.example.smartgk.model.Home_Model.HomeModel;
+import com.example.smartgk.model.Home_model_real.HomeModel2;
 import com.example.smartgk.model.NewsModel;
 import com.example.smartgk.model.UserLoginModel;
 import com.example.smartgk.model.UserModelRegistration;
@@ -36,5 +38,6 @@ public interface ApiInterface {
     @GET("userProfile/{id}")
     Call<UserModelClass> getUserProfile(@Path("id") String id);
 
-
+    @GET("get-home")
+    Call<HomeModel2> getHomePage();
 }

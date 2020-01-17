@@ -30,27 +30,7 @@
         android:background="@drawable/round_button"
         />
 
-    <TextView
-        android:id="@+id/explorTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forSearch"
-        android:text="Explore Best Courses"
-        style="@style/textActivity"
-        />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_xmedium"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explorTxt"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <RelativeLayout
         android:id="@+id/rel3"
@@ -60,7 +40,7 @@
         android:layout_marginLeft="@dimen/spacing_large"
         android:layout_marginRight="@dimen/spacing_large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler1"
+        app:layout_constraintTop_toBottomOf="@+id/forSearch"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.cardview.widget.CardView
@@ -100,17 +80,18 @@
         app:layout_constraintTop_toBottomOf="@+id/rel3"
         android:text="New Courses"
         />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginLeft="@dimen/spacing_xmedium"
+        android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginRight="@dimen/spacing_large"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newCourseTxt"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/newCourseTxt" />
 
     <TextView
         android:id="@+id/buy_booksTxt"
@@ -134,6 +115,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="@dimen/spacing_xxxxxlarge"
         />
-
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/homeProgress"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

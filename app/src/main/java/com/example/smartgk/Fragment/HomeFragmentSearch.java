@@ -1,138 +1,193 @@
 package com.example.smartgk.Fragment;
 
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Adapter.BestCoursesAdapter;
+import com.bumptech.glide.Glide;
 import com.example.smartgk.Adapter.BuyBooksAdapter;
 import com.example.smartgk.Adapter.NewCourseAdapter;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
-import com.example.smartgk.model.BestCourses;
-import com.example.smartgk.model.BuyBooks;
-import com.example.smartgk.model.NewCourses;
+import com.example.smartgk.Retrofit.ApiClient;
+import com.example.smartgk.Retrofit.ApiInterface;
+import com.example.smartgk.model.Home_model_real.Book;
+import com.example.smartgk.model.Home_model_real.Carousel;
+import com.example.smartgk.model.Home_model_real.Course;
+import com.example.smartgk.model.Home_model_real.HomeModel2;
+import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
+import com.synnapps.carouselview.ViewListener;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragmentSearch extends Fragment {
-    private RecyclerView recyclerView1, recyclerView2, recyclerView3;
-    private ArrayList<BestCourses> mList;
-    BestCoursesAdapter bestCoursesAdapter;
-    private ArrayList<NewCourses> mList2;
+    private RecyclerView recyclerViewBooksHome, recyclerViewCourseHome;
     NewCourseAdapter newCourseAdapter;
-    private ArrayList<BuyBooks> mList3;
-    BuyBooksAdapter buyBooksAdapter;
     CarouselView carouselView;
-
-    int[] sampleImages ={R.drawable.ic_child_pic,R.drawable.ic_child_pic,R.drawable.ic_child_pic, R.drawable.ic_child_pic, R.drawable.ic_child_pic};
-
-
-
-    private int[] myImageList = new int[]{R.drawable.book1, R.drawable.book1,R.drawable.book1, R.drawable.book1,R.drawable.book1};
-    private String[] myPriceNameList = new String[]{"100","380" ,"1300","1500","540"};
-    private String[] myCourseTitle = new String[]{"Lohitutu Resturant and fast food","Coffee pasal - During the day" ,"Cafe De Pattrick","Bota Momos","Nanglo Bar and Resturant"};
+    ProgressBar progressBar;
+    BuyBooksAdapter bookHomeAdapter;
+    Context context;
+    String url = "http://cosmicnepal.com/client/newsmartgk/smartgk/uploads/";
 
 
-    private int[] myBookImageList = new int[]{R.drawable.pic_alchemist, R.drawable.pic_brave,R.drawable.pic_leanin, R.drawable.pic_brave,R.drawable.pic_alchemist};
-    private String[] myBookPriceList = new String[]{"100","380" ,"1300","1500","540"};
-    private String[] myBookTitle = new String[]{"Alchemist","Brave" ,"Lean in","Brave","Alchemist"};
+    List<Book> booksArrayList = new ArrayList<>();
+    List<Course> courseArrayList = new ArrayList<>();
+    List<String>sampleImages = new ArrayList<>() ;
+
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_search, container, false);
+        final View view = inflater.inflate(R.layout.fragment_home_search, container, false);
+        progressBar = view.findViewById(R.id.homeProgress);
+        recyclerViewBooksHome = view.findViewById(R.id.recycler3);
+        recyclerViewCourseHome = view.findViewById(R.id.recycler2);
 
-        recyclerView1 = view.findViewById(R.id.recycler1);
-        mList = seeBestCourses();
-        bestCoursesAdapter = new BestCoursesAdapter(getContext(), mList, HomeFragmentSearch.this);
-        recyclerView1.setAdapter(bestCoursesAdapter);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         carouselView = (CarouselView) view.findViewById(R.id.carouselView);
-        carouselView.setPageCount(sampleImages.length);
-
-        carouselView.setImageListener(imageListener);
-        //for new course
-
-        recyclerView2 = view.findViewById(R.id.recycler2);
-        mList2 = seeNewCourses();
-        newCourseAdapter = new NewCourseAdapter(getContext(), mList2, HomeFragmentSearch.this);
-        recyclerView2.setAdapter(newCourseAdapter);
-        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
 
-        //For Books
-        recyclerView3 = view.findViewById(R.id.recycler3);
-        mList3 = seeBooks();
-        buyBooksAdapter = new BuyBooksAdapter(getContext(), mList3, HomeFragmentSearch.this);
-        recyclerView3.setAdapter(buyBooksAdapter);
-        recyclerView3.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        //bACKEND iNTEGRATION
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        retrofit2.Call<HomeModel2> call = apiInterface.getHomePage();
+        call.enqueue(new Callback<HomeModel2>() {
+            @Override
+            public void onResponse(Call<HomeModel2> call, Response<HomeModel2> response) {
+                if(response.isSuccessful()){
+                    if (response.body() != null){
+//
+                        //carousel view implementation
+                        for (Carousel carousel : response.body().getResults().getCarousel()){
+                            sampleImages.add(carousel.getFile());
+                        }
+
+
+                        carouselView.setImageListener(imageListener);
+                        carouselView.setViewListener(viewListener);
+                        carouselView.setPageCount(sampleImages.size());
+                        carouselView.setSlideInterval(4000);
+
+                        carouselView.setImageClickListener(new ImageClickListener() {
+                            @Override
+                            public void onClick(int position) {
+                                Toast.makeText(getActivity(), "Clicked item: "+ position, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        showCourses(getContext(), response.body().getResults().getCourse());
+
+                        showBooksHome(getContext(),response.body().getResults().getBook());
+                        return;
+                    }
+                }
+
+
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<HomeModel2> call, Throwable t) {
+                Toast.makeText(getContext(),"Please check your Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         return view;
     }
 
-    ImageListener imageListener = new ImageListener() {
+    private void showCourses(Context context, List<Course> course) {
+        courseArrayList.addAll(course);
+        newCourseAdapter = new NewCourseAdapter(getContext(), courseArrayList, HomeFragmentSearch.this);
+        recyclerViewCourseHome.setAdapter(newCourseAdapter);
+        recyclerViewCourseHome.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+    }
+
+
+    private void showBooksHome(Context context, List<Book> book) {
+    booksArrayList.addAll(book);
+        bookHomeAdapter = new BuyBooksAdapter(getContext(), booksArrayList, HomeFragmentSearch.this);
+        recyclerViewBooksHome.setAdapter(bookHomeAdapter);
+        recyclerViewBooksHome.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+    }
+
+
+    // To set simple images
+    final ImageListener imageListener = new ImageListener() {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(sampleImages[position]);
+
+            //Picasso.w(ge()).load(sampleNetworkImageURLs[position]).placeholder(sampleImages[0]).error(sampleImages[3]).fit().centerCrop().into(imageView);
+            Picasso.get()
+                    .load(url+sampleImages.get(position))
+                    .placeholder(R.drawable.book1)
+                    .error(R.drawable.book1)
+                    .into(imageView);
+        }
+
+    };
+
+    // To set custom views
+    ViewListener viewListener = new ViewListener() {
+        @Override
+        public View setViewForPosition(int position) {
+
+            View customView = getLayoutInflater().inflate(R.layout.view_custom, null);
+
+            TextView labelTextView = (TextView) customView.findViewById(R.id.labelTextView);
+            ImageView fruitImageView = (ImageView) customView.findViewById(R.id.fruitImageView);
+
+            Glide
+                    .with((context) )
+                    .load(sampleImages.get(position))
+                    .centerCrop()
+                    .into(fruitImageView);
+
+            labelTextView.setVisibility(View.GONE);
+
+            carouselView.setIndicatorGravity(Gravity.CENTER_HORIZONTAL|Gravity.TOP);
+
+            return customView;
         }
     };
 
-    private ArrayList<BuyBooks> seeBooks() {
-        ArrayList<BuyBooks> list3 = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            BuyBooks buyBooks = new BuyBooks();
-            buyBooks.setBookImg(myBookImageList[i]);
-            buyBooks.setBookName(myBookTitle[i]);
-            buyBooks.setBookPrice(myBookPriceList[i]);
-
-            list3.add(buyBooks);
+    View.OnClickListener pauseOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            carouselView.pauseCarousel();
+            carouselView.reSetSlideInterval(0);
         }
-        return list3;
-    }
+    };
 
 
-    private ArrayList<NewCourses> seeNewCourses() {
-            ArrayList<NewCourses> list2 = new ArrayList<>();
-            for (int i = 0; i < 5; i++) {
-                NewCourses newCourses = new NewCourses();
-                newCourses.setCoursePriceN(myPriceNameList[i]);
-                newCourses.setImageN(myImageList[i]);
-                newCourses.setCourseNameN(myCourseTitle[i]);
-
-                list2.add(newCourses);
-            }
-            return list2;
-        }
 
 
-    private ArrayList<BestCourses> seeBestCourses() {
-        ArrayList<BestCourses> list = new ArrayList<>();
-        for(int i = 0; i < 5; i++){
-            BestCourses bestCourses = new BestCourses();
-            bestCourses.setCoursePrice(myPriceNameList[i]);
-            bestCourses.setImage(myImageList[i]);
-            bestCourses.setCourseName(myCourseTitle[i]);
 
-            list.add(bestCourses);
-        }
-        return list;
-    }
 
     @Override
     public void onResume() {

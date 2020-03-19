@@ -20,7 +20,6 @@ import com.example.smartgk.Fragment.BookFragmentPackage.BookDetailsFragment;
 import com.example.smartgk.Fragment.BookFragmentPackage.BooksFragment;
 import com.example.smartgk.R;
 import com.example.smartgk.model.BooksModel;
-import com.example.smartgk.model.BuyBooks;
 import com.example.smartgk.utitlies.Constants;
 
 import java.util.List;

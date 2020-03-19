@@ -1,7 +1,6 @@
 package com.example.smartgk.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,21 +14,24 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartgk.Fragment.BookFragmentPackage.BookDetailsFragment;
+import com.bumptech.glide.Glide;
 import com.example.smartgk.Fragment.CoursesFragmentPackage.CourseDetailFragment;
 import com.example.smartgk.Fragment.CoursesFragmentPackage.CourseFragmentDrawer;
 import com.example.smartgk.R;
-import com.example.smartgk.model.NewCourses;
+import com.example.smartgk.model.CourseModelDrawer.Course;
+import com.example.smartgk.model.CourseModelDrawer.Course;
+import com.example.smartgk.utitlies.Constants;
+
 
 import java.util.List;
 
 public class CFDAddapter extends RecyclerView.Adapter<CFDAddapter.MyViewHolder>  {
 
-    List<NewCourses> mList;
+    List<Course> mList;
     Context context;
     CourseFragmentDrawer courseFragmentDrawer;
 
-    public CFDAddapter(Context context, List<NewCourses> mList, CourseFragmentDrawer courseDetailFragment){
+    public CFDAddapter(Context context, List<Course> mList, CourseFragmentDrawer courseDetailFragment){
         this.context = context;
         this.mList = mList;
         this.courseFragmentDrawer = courseDetailFragment;
@@ -45,10 +47,17 @@ public class CFDAddapter extends RecyclerView.Adapter<CFDAddapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull final CFDAddapter.MyViewHolder holder, final int position) {
-        final NewCourses newCourses =mList.get(position);
-        holder.courseImage.setImageResource(newCourses.getImageN());
-        holder.courseTitle.setText(newCourses.getCourseNameN());
-        holder.coursePrice.setText(newCourses.getCoursePriceN());
+        final Course course =mList.get(position);
+        holder.courseTitle.setText(course.getDescription());
+        holder.coursePrice.setText(course.getPackage_price());
+        holder.coursePrice.setText(course.getPackage_price());
+        Glide
+                .with((context) )
+                .load(Constants.url+course)
+                .centerCrop()
+                .error(R.drawable.course2)
+                .into(holder.courseImage);
+
         holder.coursesCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

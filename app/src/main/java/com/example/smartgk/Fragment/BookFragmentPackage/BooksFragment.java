@@ -2,8 +2,6 @@ package com.example.smartgk.Fragment.BookFragmentPackage;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.print.PrinterId;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,25 +20,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.smartgk.Adapter.BuyBooksAdapter2;
-import com.example.smartgk.Database.BookData;
 import com.example.smartgk.MainActivity;
 import com.example.smartgk.R;
 import com.example.smartgk.Retrofit.ApiClient;
 import com.example.smartgk.Retrofit.ApiInterface;
 import com.example.smartgk.Viewmodel.BookViewModel;
 import com.example.smartgk.model.BooksModel;
-import com.example.smartgk.model.BuyBooks;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.example.smartgk.Retrofit.ApiClient.apiInterface;
-import static  com.example.smartgk.Retrofit.ApiClient.makeApiInterface;
 
 public class BooksFragment extends Fragment {
     RecyclerView recyclerView;

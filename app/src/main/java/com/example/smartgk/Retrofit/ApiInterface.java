@@ -1,12 +1,11 @@
 package com.example.smartgk.Retrofit;
 
 import com.example.smartgk.model.BooksModel;
-import com.example.smartgk.model.Home_Model.HomeModel;
+import com.example.smartgk.model.CourseModelDrawer.CourseDrawerModel;
 import com.example.smartgk.model.Home_model_real.HomeModel2;
 import com.example.smartgk.model.NewsModel;
 import com.example.smartgk.model.UserLoginModel;
 import com.example.smartgk.model.UserModelRegistration;
-import com.example.smartgk.model.UserProfileModel;
 import com.example.smartgk.model.user_model.UserModelClass;
 
 import retrofit2.Call;
@@ -31,6 +30,9 @@ public interface ApiInterface {
 
     @GET("get-all-books")
     Call<BooksModel> getBooks();
+
+    @GET("courses")
+    Call<CourseDrawerModel> getCourses();
 
     @GET("get-all-news")
     Call<NewsModel> getNews();

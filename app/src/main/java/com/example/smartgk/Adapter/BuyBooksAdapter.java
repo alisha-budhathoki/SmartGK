@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide;
 import com.example.smartgk.Fragment.BookFragmentPackage.BookDetailsFragment;
 import com.example.smartgk.Fragment.HomeFragmentSearch;
 import com.example.smartgk.R;
-import com.example.smartgk.model.BuyBooks;
 import com.example.smartgk.model.Home_model_real.Book;
 import com.example.smartgk.utitlies.Constants;
 

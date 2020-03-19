@@ -3,7 +3,6 @@ package com.example.smartgk.Services;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Shader;
 import android.preference.PreferenceManager;
 
 import androidx.annotation.Nullable;
@@ -11,7 +10,6 @@ import androidx.annotation.Nullable;
 import com.example.smartgk.Database.AppRepository;
 import com.example.smartgk.Database.BookData;
 import com.example.smartgk.model.BooksModel;
-import com.example.smartgk.model.BuyBooks;
 import com.example.smartgk.utitlies.JsonUtils;
 
 import retrofit2.Call;

@@ -1,1 +1,1 @@
-# SmartGK
+# Tutorial_app
